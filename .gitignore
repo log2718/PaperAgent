@@ -1,0 +1,20 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# os / editor / spreadsheet lock files
+.DS_Store
+.~*
+~$*
+
+# reproducible artifacts (rebuild with src/ingest.py and src/retrieve.py)
+data/index.faiss
+data/embeddings.npy
+
+# source PDFs live outside the repo (~/Desktop/ML/Papers/)
+*.pdf
