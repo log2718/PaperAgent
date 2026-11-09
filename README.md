@@ -50,4 +50,14 @@ Each line of `results.jsonl` logs question ID, question, source type, retrieved 
 
 ## Known baseline limits
 
-One retrieval query per question (multi-paper questions mostly retrieve a single paper), a regex for section names (approximate), and routing taken from the question's label rather than predicted. These are left as-is on purpose; they are the starting point for improvement on the development set.
+These are left as-is on purpose; they are the starting point for improvement on the development set.
+
+**Baseline grade.** A first-pass manual grade of the 33 development answers (0-4 scale, single LLM grader; see `runs/baseline/grades.md`) gives 77% overall: table-only 96%, text+table 96%, insufficient-evidence 100% (n=2), single-paper text 78%, cross-paper text 38%. All 9 low-scoring answers are text-only and have a retrieval page hit of 0.50 or lower. No fabricated facts were found; the failures are over-abstention after retrieval missed the key page.
+
+**Retrieval on cross-paper questions.** The cause is one pooled query with top-5 over all 498 chunks, not the embedding model: the question's papers compete for five slots in a single ranking. Two failure modes appear:
+- *A paper never appears* (Q12 no MAE, Q13 no Distillation, Q14 no ResNet/ViT/BYOL, Q43 no MMLU): one paper's chunks crowd out the rest.
+- *Right paper, wrong page* (Q11, Q15, Q16, Q17): several papers are reached but the passage that holds the answer is not in the top 5.
+
+Candidate fixes, to be tried on development questions only: per-paper retrieval for the papers a question names; an LLM step that splits the question into one sub-query per paper or claim; keyword search added to embeddings (for terms like "BM25" or "Table 7").
+
+**Other limits.** A regex for section names (approximate, a few table rows are mislabeled), and routing taken from the question's label rather than predicted.
