@@ -1,60 +1,79 @@
 # Evaluation Candidates — Summary
 
-Companion to `text_evaluation_candidates.xlsx` (sheets: `Papers`, `Questions`, `Evidence`, `TabularData`, `TabularBenchmark`, `TabularEvidence`, `TabularDictionary`). The workbook holds 43 candidate questions over 15 papers: 23 text-only (Q01–Q20, six of which were replaced in the five-paper update, plus Q41–Q43), 10 table-only (Q21–Q30) and 10 text+table (Q31–Q40). Everything up to "Possible Structured Data Needs" describes the text-only set; **Part 2** (last section) describes the table-only and text+table questions and the timm dataset behind them, which the five-paper update did not touch. The plan and reasoning for the update are in `new_papers_review.md`.
+Companion to `text_evaluation_candidates.xlsx` (sheets: `Papers`, `Questions`, `Evidence`, `TabularData`, `TabularBenchmark`, `TabularEvidence`, `TabularDictionary`). The workbook holds 45 candidate questions over 15 papers: 25 text-only (Q01–Q20, six of which were replaced in the five-paper update, plus Q41–Q45), 10 table-only (Q21–Q30) and 10 text+table (Q31–Q40). Q44 and Q45 were added, and the eight manual-review questions revised or checked, on 2026-11-15 (see "Revision 2026-11-15"). Everything up to "Possible Structured Data Needs" describes the text-only set; **Part 2** (last section) describes the table-only and text+table questions and the timm dataset behind them, which the five-paper update did not touch (Q30, Q34, Q35, Q37 and Q39 were revised on 2026-11-15). The plan and reasoning for the update are in `new_papers_review.md`.
 
-Text answers and `Evidence` rows come from the PDFs only; table answers come from the timm result CSVs (`tabular_data/`). Page numbers are 1-based PDF page indices (they matched the printed page numbers in every page I spot-checked). Each quoted passage was checked programmatically against the text of its cited page (242 evidence rows across the 15 PDFs, 0 mismatches). `[...]` joins non-contiguous snippets from the same page.
+Text answers and `Evidence` rows come from the PDFs only; table answers come from the timm result CSVs (`tabular_data/`). Page numbers are 1-based PDF page indices (they matched the printed page numbers in every page I spot-checked). Each quoted passage was checked programmatically against the text of its cited page (262 evidence rows across the 15 PDFs after the 2026-11-15 revision, 0 mismatches). `[...]` joins non-contiguous snippets from the same page.
 
 > **Source location.** The 15 PDFs were not in `VIP RAG Research/papers/`. I read them from `~/Desktop/ML/Papers/`; `pdf_filename` in the `Papers` sheet uses those file names (e.g. `byolpaper.pdf`, `viTpaper.pdf`, `batchnorm_paper.pdf`, `SWE_bench.pdf`).
+
+## Revision 2026-11-15 (manual-review fixes and two new questions)
+
+Made after the baseline grading, at the user's request. All eight revised or checked questions are development questions; no held-out question was edited.
+
+| ID | Change |
+|---|---|
+| Q02 | Question rewritten to ask for the Table 1 numbers only. It used to ask whether the text and Table 1 agree; they do not and the paper does not explain why, so the question could not be graded cleanly. The text figures stay in `notes` and in the evidence rows; difficulty hard to medium. |
+| Q09 | Question now centres on the explanation (Euclidean distance as a proxy for geodesic distance, conditioning, the linear-dynamics theory) and asks only whether the results generally improve; reference answer reordered; 1 evidence row added. |
+| Q12 | Re-checked against the MAE and I-JEPA PDFs; the question is unchanged. The normalized-pixel claim now cites Table 1d, and 3 evidence rows were added (I-JEPA loss, MAE lightweight decoder, MAE Table 1d). |
+| Q30 | Recomputed independently from the raw CSVs (26 frontier rows, 11 at top-1 of at least 85%, confirmed). Wording states that listed throughput is used. Sensitivity to batch size (24 and 9 when restricted to batch size 1024) is recorded in `notes` and as a second `TabularEvidence` row. |
+| Q34 | The reference answer said robustness "decreases" with size next to numbers that rise; corrected. The question now asks about ImageNet-R and ImageNet-A top-1 instead of "robustness", and the answer adds the shrinking drop against clean accuracy. |
+| Q35 | Claim weakened to "consistent in direction" and the size question made less specific (similar gain for Small and Base). |
+| Q37 | The question no longer asks whether the data "confirms" the paper's claim (a yes/no verdict the table cannot support); it asks what the comparison says or does not say. The reference answer states which rows it uses and notes that the ranking depends on the rows chosen. |
+| Q39 | The question now asks how many rows "reach" each number (>= for all three, also in the stored SQL) and what limits how the comparison can be read, rather than what "must be kept in mind". |
+| Q44 | New (SWE-bench: BM25 vs oracle context; the reserve candidate SW1), 10 evidence rows. |
+| Q45 | New (BYOL x BatchNorm: where BYOL's batch-size dependence sits and where BN's training statistics come from; the spare pairing), 6 evidence rows. A first draft on ViT parameter counts was dropped because held-out Q38 already asks it. |
+
+After the revision: 45 questions (25 text-only, 10 table-only, 10 text+table), 10 held-out and 35 development, 262 evidence rows (all quotes re-verified, 0 mismatches), 22 SQL statements re-run (all reproduce), and no manual-review flags remaining. The run in `runs/baseline/` predates this revision, so its rows for Q02, Q09, Q30, Q34, Q35, Q37 and Q39 answer the old wording and Q44 and Q45 have not been run.
 
 ## Update: five additional papers (P11–P15)
 
 | ID | Paper | Category | Questions |
 |---|---|---|---|
-| P11 | BatchNorm: Batch Normalization (Ioffe & Szegedy) | Training Methods | Q08, Q41 |
+| P11 | BatchNorm: Batch Normalization (Ioffe & Szegedy) | Training Methods | Q08, Q41, Q45 |
 | P12 | Distillation: Distilling the Knowledge in a Neural Network (Hinton et al.) | Training Methods | Q13, Q18 |
 | P13 | BabyCL: Continual Visual and Verbal Learning Through a Child's Egocentric Input (Jiang et al.) | Representation Learning | Q02, Q15 |
 | P14 | MMLU: Measuring Massive Multitask Language Understanding (Hendrycks et al.) | Retrieval & Evaluation | Q42, Q43 |
-| P15 | SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (Jimenez et al.) | Retrieval & Evaluation | Q20, Q43 |
+| P15 | SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (Jimenez et al.) | Retrieval & Evaluation | Q20, Q43, Q44 |
 
 Six existing IDs were reused for new questions so that IDs stay stable and Q21–Q40 are untouched; the old content of those IDs is retired and its evidence rows were removed.
 
 | ID | Retired question | New question |
 |---|---|---|
-| Q02 | MAE default masking ratio and rationale (easy, widely known) | BabyCL: 4AFC accuracy against baselines, and the text/Table 1 conflict |
+| Q02 | MAE default masking ratio and rationale (easy, widely known) | BabyCL: Table 1 4AFC accuracy against baselines (revised 2026-11-15; it originally also asked about the text/Table 1 conflict) |
 | Q08 | ViT: pre-training data size vs ResNets (overlapped Q35) | BatchNorm: evidence for covariate-shift reduction vs what was measured |
 | Q13 | BYOL vs I-JEPA: prediction task and augmentation dependence | Distillation x BYOL: where targets come from, labels, mean teacher |
 | Q15 | ViT vs MAE: masked-patch pre-training | BabyCL x BYOL: augmentation probabilities and negative pairs |
 | Q18 | EmbeddingLimits: dimension needed for 10M documents (reused Q10's passages) | Distillation: JFT accuracy after distilling the specialists (insufficient evidence) |
 | Q20 | FIRE-Bench: novel scientific discovery (easy, answer guessable) | SWE-bench: agent-based resolve rate (insufficient evidence) |
 
-Q41 (BatchNorm x ResNet: inference statistics and frozen BN in detection), Q42 (MMLU: parameter count vs fine-tuning and pretraining data) and Q43 (MMLU x SWE-bench x FIRE-Bench: contamination checks) were added. One further candidate, a SWE-bench retrieval question (BM25 vs oracle files), is documented in `new_papers_review.md` as a reserve and is not in the workbook.
+Q41 (BatchNorm x ResNet: inference statistics and frozen BN in detection), Q42 (MMLU: parameter count vs fine-tuning and pretraining data) and Q43 (MMLU x SWE-bench x FIRE-Bench: contamination checks) were added. One further candidate, a SWE-bench retrieval question (BM25 vs oracle files), was documented in `new_papers_review.md` as a reserve and was added as Q44 on 2026-11-15.
 
-## Overview of all 43 questions
+## Overview of all 45 questions
 
 | `data_source_type` | Questions | Count | easy / medium / hard | `manual_review_needed` = yes |
 |---|---|---|---|---|
-| text-only | Q01–Q20, Q41–Q43 | 23 | 2 / 12 / 9 | Q02, Q09, Q12 |
-| table-only | Q21–Q30 | 10 | 2 / 5 / 3 | Q30 |
-| text+table | Q31–Q40 | 10 | 1 / 5 / 4 | Q34, Q35, Q37, Q39 |
-| **Total** | Q01–Q43 | **43** | **5 / 22 / 16** | **8** |
+| text-only | Q01–Q20, Q41–Q45 | 25 | 2 / 15 / 8 | none |
+| table-only | Q21–Q30 | 10 | 2 / 5 / 3 | none |
+| text+table | Q31–Q40 | 10 | 1 / 5 / 4 | none |
+| **Total** | Q01–Q45 | **45** | **5 / 25 / 15** | **0** |
 
-- `split` is `development` for all 43 rows; held-out questions will be picked by hand later.
-- Answerable = yes: 40; answerable = no: 3 (Q18, Q19, Q20, all text-only).
-- 14 of the original Q01–Q20 are unchanged since the first pass, and Q21–Q40 are unchanged (compared against a backup of the workbook). `Evidence` has 242 rows: 151 carried over and 91 new.
-- Manual-review flags went from 9 to 8: Q13 and Q15 are gone with their questions and Q02 is new.
+- `split`: 10 held-out (Q05, Q10, Q19, Q22, Q26, Q28, Q33, Q36, Q38, Q41; see `heldout_selection.md`) and 35 development.
+- Answerable = yes: 42; answerable = no: 3 (Q18, Q19, Q20, all text-only).
+- 14 of the original Q01–Q20 are unchanged since the first pass, and Q21–Q40 were unchanged by the five-paper update (compared against a backup of the workbook; Q30, Q34, Q35, Q37 and Q39 were revised on 2026-11-15). `Evidence` had 242 rows after the five-paper update (151 carried over, 91 new) and has 262 after 2026-11-15 (+1 Q09, +3 Q12, +10 Q44, +6 Q45).
+- Manual-review flags went from 9 to 8 in the five-paper update (Q13 and Q15 are gone with their questions and Q02 is new), and to 0 on 2026-11-15 (all eight were resolved).
 - **Decision (2026-11-08): keep 43.** The set is 3 questions over the earlier 40 on purpose: five new papers each get two questions (four of the nine new questions, Q13, Q15, Q41 and Q43, are also cross-paper with older papers), and only weak, redundant or flagged questions were removed. The option of dropping Q41, Q42 and Q04 to restore exactly 40 is documented in `new_papers_review.md` but was not taken.
 
-## Question counts (text-only, 23)
+## Question counts (text-only, 25)
 
 | Type | Count | | Difficulty | Count |
 |---|---|---|---|---|
 | factual | 5 | | easy | 2 |
-| conceptual | 6 | | medium | 12 |
-| cross-paper | 9 | | hard | 9 |
+| conceptual | 7 | | medium | 15 |
+| cross-paper | 10 | | hard | 8 |
 | insufficient-evidence | 3 | | | |
 
-- Answerable = yes: 20; answerable = no: 3 (Q18–Q20).
-- Flagged `manual_review_needed = yes`: 3 (Q02, Q09, Q12). Q09 and Q12 are flagged for claim-vs-evidence or not-like-for-like comparisons; Q02 because the paper's own text and Table 1 give different numbers and the paper does not reconcile them. Reasons are in `notes`.
+- Answerable = yes: 22; answerable = no: 3 (Q18–Q20).
+- Flagged `manual_review_needed = yes`: none. Q02, Q09 and Q12 were flagged in the five-paper update and resolved on 2026-11-15 (see "Revision 2026-11-15"); the reasons and resolutions are in `notes`.
 
 ## Questions involving each paper
 
@@ -63,20 +82,20 @@ Q41 (BatchNorm x ResNet: inference statistics and frozen BN in detection), Q42 (
 | Transformer | Q06, Q11 | — | 2 |
 | ResNet | Q01, Q14, Q41 | Q32, Q36, Q40 | 6 |
 | ViT | Q11, Q14 | Q31, Q33, Q35, Q37, Q38 | 7 |
-| BYOL | Q07, Q13, Q14, Q15 | Q39 | 5 |
+| BYOL | Q07, Q13, Q14, Q15, Q45 | Q39 | 6 |
 | MAE | Q12 | Q34 | 2 |
 | I-JEPA | Q03, Q12 | — | 2 |
 | TemporalStraightening | Q09, Q14, Q19 | — | 3 |
 | EmbeddingLimits | Q10, Q16 | — | 2 |
 | DailyOracle | Q04, Q16, Q17 | — | 3 |
 | FIRE-Bench | Q05, Q17, Q43 | — | 3 |
-| BatchNorm | Q08, Q41 | — | 2 |
+| BatchNorm | Q08, Q41, Q45 | — | 3 |
 | Distillation | Q13, Q18 | — | 2 |
 | BabyCL | Q02, Q15 | — | 2 |
 | MMLU | Q42, Q43 | — | 2 |
-| SWE-bench | Q20, Q43 | — | 2 |
+| SWE-bench | Q20, Q43, Q44 | — | 3 |
 
-The ten table-only questions (Q21–Q30) need no paper. Every one of the 15 papers appears in at least 2 questions. MAE, BYOL and I-JEPA together appear in 6 of the 23 text-only questions (Q03, Q07, Q12, Q13, Q14, Q15), down from 7 of 20: MAE falls from three text-only questions to one and I-JEPA from three to two, while BYOL rises from three to four because two of the most natural links for the new papers (Distillation and BabyCL) run through it. ViT falls from 9 appearances to 7. Only ResNet, ViT, MAE and BYOL have text+table questions, because the timm table overlaps only those papers (see Part 2).
+The ten table-only questions (Q21–Q30) need no paper. Every one of the 15 papers appears in at least 2 questions. MAE, BYOL and I-JEPA together appear in 7 of the 25 text-only questions (Q03, Q07, Q12, Q13, Q14, Q15, Q45), compared with 7 of 20 in the first version: MAE falls from three text-only questions to one and I-JEPA from three to two, while BYOL rises from three to four because two of the most natural links for the new papers (Distillation and BabyCL) run through it. ViT falls from 9 appearances to 7. Only ResNet, ViT, MAE and BYOL have text+table questions, because the timm table overlaps only those papers (see Part 2).
 
 ## What kind of retrieval challenges the text-only set creates
 
@@ -167,7 +186,7 @@ Mixed-source questions that would need both the text and the table: Q16/Q17 (ret
 | BYOL | No BYOL weights; only the ResNet-50 architecture, which BYOL's quoted ImageNet numbers refer to | Q39 |
 | Transformer, I-JEPA, TemporalStraightening, EmbeddingLimits, DailyOracle, FIRE-Bench, BatchNorm, Distillation, BabyCL, MMLU, SWE-bench | None (distillation-trained weights exist as `dist` tags but no question uses them) | stay text-only |
 
-## The 20 questions
+## The 20 questions (Q30, Q34, Q35, Q37 and Q39 revised on 2026-11-15)
 
 Table-only (no paper needed; every one is marked "needs the table" in `notes`):
 
@@ -182,7 +201,7 @@ Table-only (no paper needed; every one is marked "needs the table" in `notes`):
 | Q27 | tv_in1k ResNets: validation→ImageNet-V2 drop by depth | filter, difference | medium | no |
 | Q28 | Rows in the validation top 10 but not the ImageNet-R top 10, with both ranks | two RANK windows | hard | no |
 | Q29 | Best top-1 under 10M parameters, at ≤25M, and overall | three constrained rankings | easy | no |
-| Q30 | Accuracy–throughput Pareto frontier at 224 px (26 of 783 rows; 11 with top-1 ≥85%) | join, NOT EXISTS | hard | **yes** |
+| Q30 | Accuracy–throughput Pareto frontier at 224 px (26 of 783 rows; 11 with top-1 ≥85%) | join, NOT EXISTS | hard | no (checked 2026-11-15) |
 
 Text+table (each has `Evidence` rows from the paper and a `TabularEvidence` row with the SQL; Q39 has two SQL statements):
 
@@ -191,12 +210,12 @@ Text+table (each has `Evidence` rows from the paper and a `TabularEvidence` row 
 | Q31 | ViT | Patch size 32/16/8: GMACs and throughput against the paper's sequence-length formula | medium | no |
 | Q32 | ResNet | Paper Table 1 FLOPs vs timm GMACs (largest gap: resnet50, +8.2%) | medium | no |
 | Q33 | ViT | Original-checkpoint hybrid vs plain ViT-B/16 at 384 px | hard | no |
-| Q34 | MAE | MAE-tagged Hiera rows: robustness by size, plus the pre-training task the MAE paper describes | hard | **yes** |
-| Q35 | ViT | AugReg in21k→in1k vs in1k-only pairs, against the paper's pre-training-data claim | hard | **yes** |
+| Q34 | MAE | MAE-tagged Hiera rows: ImageNet-R and ImageNet-A top-1 by size, plus the pre-training task the MAE paper describes | hard | no (revised 2026-11-15) |
+| Q35 | ViT | AugReg in21k→in1k vs in1k-only pairs: Small vs Base gain, consistent in direction with the paper's pre-training-data claim | hard | no (revised 2026-11-15) |
 | Q36 | ResNet | Does top-1 rise with depth in every weight tag, against the paper's depth claim | medium | no |
-| Q37 | ViT | ViT-B/16 vs ResNet-50/101/152 on top-1 and throughput, against the paper's pre-training-compute claim | hard | **yes** |
+| Q37 | ViT | ViT-B/16 vs ResNet-50/101/152 on top-1 and throughput, against the paper's pre-training-compute claim | hard | no (revised 2026-11-15) |
 | Q38 | ViT | Paper Table 1 parameter counts vs timm (all within 1%) | easy | no |
-| Q39 | BYOL | BYOL's 74.3 / 76.5 / 78.9 vs 18 timm resnet50 rows (18 / 17 / 13 at or above each) | medium | **yes** |
+| Q39 | BYOL | BYOL's 74.3 / 76.5 / 78.9 vs 18 timm resnet50 rows (18 / 17 / 13 at or above each) | medium | no (revised 2026-11-15) |
 | Q40 | ResNet | resnet152 vs vgg16/vgg19: parameters, GMACs, throughput, top-1, against the paper's complexity claim | medium | no |
 
 ## What these questions test
@@ -219,19 +238,21 @@ Text+table (each has `Evidence` rows from the paper and a `TabularEvidence` row 
 
 ## Manual review (Part 2)
 
-| ID | Why |
-|---|---|
-| Q30 | The frontier depends on single-GPU throughput at batch sizes that vary by row, and on which weight tag has the best top-1 for each architecture. |
-| Q34 | The MAE link rests on the timm model card and tag name; the MAE PDF does not cover Hiera. Six rows of one family; all fine-tuned on ImageNet-1k at 224 px. |
-| Q35 | The two tags are different training pipelines; only Small and Base sizes have pairs, so a size trend cannot be separated from architecture. Answer should say "consistent in direction", not "confirms". |
-| Q37 | Asks for a yes/no on pre-training compute, which the table does not contain; ViT weights use ImageNet-21k pre-training while the ResNets use ImageNet-1k recipes. |
-| Q39 | Compares a linear probe on self-supervised features with fully supervised weights; BYOL's 76.5 and 78.9 baselines are cited from other papers. |
+Q30, Q34, Q35, Q37 and Q39 were flagged when Part 2 was written and all were resolved on 2026-11-15; the original concern and the resolution are:
 
-(The three text-only flags are Q02, Q09 and Q12; see the text-only sections above.)
+| ID | Why (original concern) and resolution |
+|---|---|
+| Q30 | The frontier depends on single-GPU throughput at batch sizes that vary by row. Resolved: recomputed independently (26 / 11 confirmed), wording states that listed throughput is used, and the batch-size-1024 variant (24 / 9) is recorded. |
+| Q34 | The MAE link rests on the timm model card and tag name; the MAE PDF does not cover Hiera. Resolved: reference answer corrected (values rise with size), question asks about ImageNet-R and -A top-1, and the caveat is in the reference answer. |
+| Q35 | The two tags are different training pipelines, and only Small and Base have pairs. Resolved: the claim is now "consistent in direction" and the question asks whether the gain is similar for Small and Base. |
+| Q37 | Asked for a yes/no on pre-training compute, which the table does not contain; ViT weights use ImageNet-21k pre-training while the ResNets use ImageNet-1k recipes. Resolved: the question asks what the comparison says or does not say, the reference answer names the rows used, and the confound is stated. |
+| Q39 | Compares a linear probe on self-supervised features with fully supervised weights; BYOL's 76.5 and 78.9 baselines are cited from other papers. Resolved: the question asks how many rows reach each number and what limits how the comparison can be read; the caveats stay in the reference answer. |
+
+(The three text-only flags, Q02, Q09 and Q12, were also resolved on 2026-11-15.)
 
 ## Checks run on Part 2
 
-- All 21 SQL statements in `TabularEvidence` were re-run against `timm_results.sqlite` from the text saved in the workbook; each reproduced the stored `supporting_rows_or_result`.
+- All 21 SQL statements in `TabularEvidence` (22 after 2026-11-15, with the Q30 batch-size check) were re-run against `timm_results.sqlite` from the text saved in the workbook; each reproduced the stored `supporting_rows_or_result`.
 - The 29 new `Evidence` quotes (Q31–Q40) were checked against the cited PDF pages like the original 167: 196 of 196 matched when Part 2 was written, and after the five-paper update all 242 evidence rows match.
 - `TabularData` (1,556 rows) and `TabularBenchmark` (1,627 rows) match the row counts in the database. The database's `model_metadata` table (521 rows) is loaded but not exported to the workbook and not used by any question.
 - Known limits: single-reviewer pass; the answers to Q21–Q30 are query results on one snapshot, so they should be re-run if the table is rebuilt from a different commit.

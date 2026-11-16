@@ -2,6 +2,8 @@
 
 Graded by Claude (Sonnet 5.5) reading each system answer against the workbook's reference answer in `report.md`. This is a single LLM grader, the same model family that produced the answers, so treat it as a first pass and spot-check. Held-out questions were not run or graded. Numbers were compared with the reference answer; I did not re-open the PDFs or re-run the SQL.
 
+> **Revision note (2026-11-15).** The workbook was revised after this grading: Q02, Q09, Q30, Q34, Q35, Q37 and Q39 were reworded (Q12's reference answer only gained a figure), and Q44 and Q45 were added. The rows for Q02, Q09, Q30, Q34, Q35, Q37 and Q39 below grade the old wording and should be redone after re-running those questions; Q44 and Q45 have not been run or graded.
+
 **Scale (0-4):** 4 = correct and complete; 3 = correct, minor omission or small overreach; 2 = about half the question answered, rest missing or honestly marked as not established; 1 = mostly missing or unhelpful; 0 = wrong or fabricated. For insufficient-evidence questions, 4 = correct abstention that also says what the paper does show.
 
 ## Summary

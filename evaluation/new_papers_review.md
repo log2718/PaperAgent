@@ -1,5 +1,7 @@
 # New papers review: BatchNorm, Distillation, BabyCL, MMLU, SWE-bench
 
+> **Update 2026-11-15.** The reserve candidate SW1 was added to the workbook as Q44, and the spare BatchNorm x BYOL batch-size pairing as Q45 (45 questions in total; see `evaluation_summary.md`, "Revision 2026-11-15"). The counts below describe the workbook as it was on 2026-11-08.
+
 Status: **plan written before any workbook edit**; the outcome of applying it is recorded in section 7. Sources are the five PDFs in `~/Desktop/ML/Papers/` (`batchnorm_paper.pdf`, `Distill_Knowledge.pdf`, `Continual_learning_child.pdf`, `MMLU_paper.pdf`, `SWE_bench.pdf`). Every supporting passage quoted below was checked programmatically against the text of its cited PDF page (100 passages, 0 mismatches); page numbers are 1-based PDF pages and matched the printed numbers. `[...]` joins non-contiguous snippets from the same page.
 
 ## Recommendation in brief
