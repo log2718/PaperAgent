@@ -1,0 +1,33 @@
+{
+ "mode": "paragraph",
+ "n_chunks": 2356,
+ "per_paper": {
+  "Transformer": 97,
+  "ResNet": 132,
+  "ViT": 140,
+  "BYOL": 238,
+  "MAE": 146,
+  "I-JEPA": 133,
+  "TemporalStraightening": 189,
+  "EmbeddingLimits": 151,
+  "DailyOracle": 204,
+  "FIRE-Bench": 252,
+  "BatchNorm": 92,
+  "Distillation": 57,
+  "BabyCL": 78,
+  "MMLU": 150,
+  "SWE-bench": 297
+ },
+ "ingest_seconds": 5.7,
+ "tokens": {
+  "min": 1,
+  "p10": 65,
+  "median": 106,
+  "mean": 124,
+  "p90": 210,
+  "max": 390
+ },
+ "index_seconds": 61.5,
+ "index_bytes": 7237677,
+ "embed_model": "nomic-ai/nomic-embed-text-v1.5"
+}

@@ -1,6 +1,7 @@
 """Blind grading helpers for the 0/1/2 rubric in evaluation/grading_rubric.md. No model is called here.
 
     python src/grade.py packet runs/baseline runs/other     # one blind packet per question, all runs side by side
+    python src/grade.py batches --size 8 [--ids Q01 ..] [--prefix s]   # split the packets into batch files and write one grader brief per batch
     python src/grade.py check runs/_grading/grades.jsonl    # validate grader output against the rubric's rules
     python src/grade.py summarize runs/_grading/grades.jsonl  # per-run grades.jsonl + grades.md, and comparison.md
 
@@ -80,7 +81,9 @@ def packet(args):
     gold, ev = gold_pages(), collections.defaultdict(list)
     for r in load_sheet("Evidence"):
         ev[r["question_id"]].append({"paper": r["paper_short_name"], "page": r["page"], "passage": (r["supporting_passage"] or "")[:300]})
-    tab = {r["question_id"]: (r["supporting_rows_or_result"] or "")[:800] for r in load_sheet("TabularEvidence")}
+    tab = collections.defaultdict(list)                          # every reference SQL result, labelled with its role
+    for r in load_sheet("TabularEvidence"):
+        tab[r["question_id"]].append({"role": r["evidence_role"], "result": (r["supporting_rows_or_result"] or "")[:3000]})
     runs = load_runs(args.runs)
     ids = [i for i in qs if qs[i]["split"] == args.split and any(i in r for r in runs.values()) and (not args.ids or i in args.ids)]
     GRADING.mkdir(parents=True, exist_ok=True)
@@ -105,7 +108,7 @@ def packet(args):
             cands.append(c); labels[qid][letter] = ds
         q = qs[qid]
         out.append({"question_id": qid, "question": q["question"], "source_type": q["data_source_type"], "answerable": q["answerable"],
-                    "reference_answer": q["reference_answer"], "notes": q["notes"], "gold_evidence": ev[qid], "gold_sql_result": tab.get(qid),
+                    "reference_answer": q["reference_answer"], "notes": re.sub(r"\bQ(05|10|19|22|26|28|33|36|38|41)\b", "another question", q["notes"] or ""), "gold_evidence": ev[qid], "gold_sql_result": tab.get(qid) or None,
                     "candidates": cands})
     with open(GRADING / "packets.jsonl", "w", encoding="utf-8") as f:
         f.writelines(json.dumps(p, ensure_ascii=False) + "\n" for p in out)
@@ -138,8 +141,50 @@ def problems(g):
     return bad
 
 
+BRIEF = """# Grading brief, batch {n}
+
+Need: grade every candidate answer in one batch of questions on the 0/1/2 rubric. The answers come from different configurations of a
+research-paper question-answering system. You are not told which candidate came from which, and you must not try to find out. Grade each
+candidate on its own against the reference answer, never against the other candidates.
+
+Steps
+1. Read {root}/evaluation/grading_rubric.md in full. It is the only standard.
+2. Read {root}/runs/_grading/batches/batch_{n}.jsonl. Each line is one question with its reference answer, `notes` (grader guidance:
+   read it), `gold_evidence` (passages behind the reference), `gold_sql_result`, and `candidates` (label, answer, retrieved pages, a
+   mechanical `citation_check`, and the SQL for table questions).
+3. For each candidate: list the reference's key points, mark each present, missing or wrong, check the sources (citation_check and
+   gold_evidence), then score.
+4. Write one JSON object per candidate, one per line, to {root}/runs/_grading/grades_batch_{n}.jsonl with exactly the fields question_id,
+   label, score, failure_mode, missing_points, wrong_claims, citation_issues, rationale. The rubric gives the allowed values and the
+   consistency rules.
+5. Run (the path contains spaces, keep the quotes)
+   `"{root}/.venv/bin/python" "{root}/src/grade.py" check "{root}/runs/_grading/grades_batch_{n}.jsonl" --packets "{root}/runs/_grading/batches/batch_{n}.jsonl"`
+   and fix every problem it prints. It must end with "0 problems".
+
+Constraints: open only the two files named above. Do not open anything else under {root}/runs/ (results, key.json, other grades), nor
+the papers, the corpus or chunk files under {root}/data/, nor the workbook or the timm database: the packet already holds the
+evidence you may use. Do not change any file except your output file, do not edit code.
+
+Report: how many candidates you graded, the output of the check command, and every candidate where you were unsure (question_id,
+label, why).
+"""
+
+
+def batches(args):
+    packets = [json.loads(l) for l in open(GRADING / "packets.jsonl", encoding="utf-8")]
+    packets = [p for p in packets if not args.ids or p["question_id"] in args.ids]
+    (GRADING / "batches").mkdir(exist_ok=True)
+    (GRADING / "briefs").mkdir(exist_ok=True)
+    for n, i in enumerate(range(0, len(packets), args.size), start=1):
+        n = f"{args.prefix}{n}"
+        with open(GRADING / "batches" / f"batch_{n}.jsonl", "w", encoding="utf-8") as f:
+            f.writelines(json.dumps(p, ensure_ascii=False) + "\n" for p in packets[i:i + args.size])
+        (GRADING / "briefs" / f"brief_{n}.md").write_text(BRIEF.format(n=n, root=ROOT), encoding="utf-8")
+    print(f"{len(packets)} packets -> {n} batches, briefs in {GRADING / 'briefs'}")
+
+
 def check(args):
-    grades, packets = read_grades(args.grades), GRADING / "packets.jsonl"
+    grades, packets = read_grades(args.grades), Path(args.packets) if args.packets else GRADING / "packets.jsonl"
     seen, errors = set(), 0
     for i, g in enumerate(grades, 1):
         k = (g.get("question_id"), g.get("label"))
@@ -193,19 +238,48 @@ def summarize(args):
         lines = ["# Comparison of runs", "", "| Group | " + " | ".join(names) + " |", "|---|" + "---|" * len(names)]
         for name, pick in groups:
             lines.append(f"| {name} | " + " | ".join(pct([g for i, g in per_run[r].items() if pick(meta[i])]) for r in names) + " |")
-        base = names[0]
-        lines += ["", f"Paired against {base} (questions graded in both; mean score difference on the 0-2 scale, bootstrap 95% interval):", "",
-                  "| Run | Questions | Mean difference | 95% interval | Better / same / worse |", "|---|---|---|---|---|"]
-        for r in names[1:]:
-            common = [i for i in per_run[r] if i in per_run[base]]
-            d = [per_run[r][i]["score"] - per_run[base][i]["score"] for i in common]
-            lo, hi = bootstrap(d) if d else (0, 0)
-            lines.append(f"| {r} | {len(d)} | {sum(d) / max(len(d), 1):+.2f} | {lo:+.2f} to {hi:+.2f} | {sum(x > 0 for x in d)} / {sum(x == 0 for x in d)} / {sum(x < 0 for x in d)} |")
+        modes = sorted({g["failure_mode"] for r in names for g in per_run[r].values() if g["score"] < 2})
+        lines += ["", "Answers scoring below 2, by failure mode:", "", "| Failure mode | " + " | ".join(names) + " |", "|---|" + "---|" * len(names)]
+        lines += [f"| {m} | " + " | ".join(str(sum(g["failure_mode"] == m and g["score"] < 2 for g in per_run[r].values())) for r in names) + " |" for m in modes]
+
+        def paired(base, others):
+            out = ["", f"Paired against {base} (questions graded in both; mean score difference on the 0-2 scale, bootstrap 95% interval):", "",
+                   "| Run | Questions | Mean difference | 95% interval | Better / same / worse |", "|---|---|---|---|---|"]
+            for r in others:
+                common = [i for i in per_run[r] if i in per_run[base]]
+                d = [per_run[r][i]["score"] - per_run[base][i]["score"] for i in common]
+                lo, hi = bootstrap(d) if d else (0, 0)
+                out.append(f"| {r} | {len(d)} | {sum(d) / max(len(d), 1):+.2f} | {lo:+.2f} to {hi:+.2f} | {sum(x > 0 for x in d)} / {sum(x == 0 for x in d)} / {sum(x < 0 for x in d)} |")
+            return out
+        base = "runs/baseline" if "runs/baseline" in per_run else names[0]
+        lines += paired(base, [r for r in names if r != base])
+        if "runs/chunk_paper" in per_run and "runs/no_embedding" in per_run:
+            lines += paired("runs/no_embedding", ["runs/chunk_paper"])
         ids = sorted({i for r in names for i in per_run[r]})
         lines += ["", "| ID | " + " | ".join(names) + " |", "|---|" + "---|" * len(names)]
         lines += [f"| {i} | " + " | ".join(str(per_run[r][i]["score"]) if i in per_run[r] else "-" for r in names) + " |" for i in ids]
         (GRADING / "comparison.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
         print(f"comparison -> {GRADING / 'comparison.md'}")
+
+
+def agree(args):
+    """Exact agreement and quadratic-weighted kappa between two graders on the candidates both graded; writes runs/_grading/agreement.md."""
+    a = {(g["question_id"], g["label"]): g["score"] for g in read_grades(args.first)}
+    b = {(g["question_id"], g["label"]): g["score"] for g in read_grades(args.second)}
+    keys = sorted(set(a) & set(b))
+    n, cats = len(keys), (0, 1, 2)
+    obs = {(i, j): sum(a[k] == i and b[k] == j for k in keys) for i in cats for j in cats}
+    row, col = {i: sum(obs[i, j] for j in cats) for i in cats}, {j: sum(obs[i, j] for i in cats) for j in cats}
+    num = sum((i - j) ** 2 * obs[i, j] for i in cats for j in cats)
+    den = sum((i - j) ** 2 * row[i] * col[j] / n for i in cats for j in cats)
+    lines = ["# Grader agreement", "", f"{n} candidates on {len({k[0] for k in keys})} questions graded by both graders "
+             f"({args.first} and {args.second}).", "", f"Exact agreement: {sum(a[k] == b[k] for k in keys)} of {n} ({100 * sum(a[k] == b[k] for k in keys) / n:.1f}%).",
+             f"Quadratic-weighted kappa: {1 - num / den:.3f}.", f"Mean score: first {sum(a[k] for k in keys) / n:.2f}, second {sum(b[k] for k in keys) / n:.2f}.", "",
+             "Rows are the first grader's score, columns the second's.", "", "| | 0 | 1 | 2 |", "|---|---|---|---|"]
+    lines += [f"| {i} | " + " | ".join(str(obs[i, j]) for j in cats) + " |" for i in cats]
+    lines += ["", "Disagreements: " + ", ".join(f"{k[0]}/{k[1]} ({a[k]} vs {b[k]})" for k in keys if a[k] != b[k]) + "."]
+    (GRADING / "agreement.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print("\n".join(lines))
 
 
 if __name__ == "__main__":
@@ -217,9 +291,17 @@ if __name__ == "__main__":
     p.add_argument("--split", default="development", choices=["development", "held-out"])
     p.add_argument("--seed", default="0")
     p.add_argument("--with-text", action="store_true")
+    b = sub.add_parser("batches")
+    b.add_argument("--size", type=int, default=8)
+    b.add_argument("--ids", nargs="*", help="only these questions")
+    b.add_argument("--prefix", default="", help="batch file names batch_<prefix><n>.jsonl (so earlier batches are not overwritten)")
     c = sub.add_parser("check")
     c.add_argument("grades")
+    c.add_argument("--packets", help="packets file to check coverage against (default runs/_grading/packets.jsonl)")
     s = sub.add_parser("summarize")
     s.add_argument("grades")
+    g = sub.add_parser("agree")
+    g.add_argument("first")
+    g.add_argument("second")
     a = ap.parse_args()
-    {"packet": packet, "check": check, "summarize": summarize}[a.cmd](a)
+    {"packet": packet, "batches": batches, "check": check, "summarize": summarize, "agree": agree}[a.cmd](a)

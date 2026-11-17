@@ -1,0 +1,2722 @@
+{
+ "token K=1": {
+  "Q01": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q03": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q04": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q06": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q07": {
+   "pages": 0.2,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q08": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q09": {
+   "pages": 0.14285714285714285,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q11": {
+   "pages": 0.16666666666666666,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q12": {
+   "pages": 0.1111111111111111,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q13": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q14": {
+   "pages": 0.1,
+   "papers": 0.25,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q15": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q16": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q17": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q18": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q20": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q31": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q32": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q35": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q37": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q39": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q40": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q42": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q43": {
+   "pages": 0.0,
+   "papers": 0.3333333333333333,
+   "mrr": 0,
+   "tokens": 700
+  },
+  "Q44": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q45": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 701
+  }
+ },
+ "token K=3": {
+  "Q01": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 2100
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q06": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q07": {
+   "pages": 0.6,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q08": {
+   "pages": 0.25,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 2100
+  },
+  "Q09": {
+   "pages": 0.14285714285714285,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q11": {
+   "pages": 0.16666666666666666,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q12": {
+   "pages": 0.1111111111111111,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q13": {
+   "pages": 0.16666666666666666,
+   "papers": 0.5,
+   "mrr": 0.5,
+   "tokens": 2100
+  },
+  "Q14": {
+   "pages": 0.1,
+   "papers": 0.25,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q15": {
+   "pages": 0.14285714285714285,
+   "papers": 0.5,
+   "mrr": 0.3333333333333333,
+   "tokens": 2100
+  },
+  "Q16": {
+   "pages": 0.2,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 2100
+  },
+  "Q17": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 2100
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q20": {
+   "pages": 0.25,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 2100
+  },
+  "Q31": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 2100
+  },
+  "Q32": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 1838
+  },
+  "Q35": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 2100
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 2100
+  },
+  "Q42": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q43": {
+   "pages": 0.16666666666666666,
+   "papers": 0.3333333333333333,
+   "mrr": 0.5,
+   "tokens": 2100
+  },
+  "Q44": {
+   "pages": 0.75,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2100
+  },
+  "Q45": {
+   "pages": 0.6666666666666666,
+   "papers": 0.5,
+   "mrr": 0.5,
+   "tokens": 2101
+  }
+ },
+ "token K=5": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3500
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2994
+  },
+  "Q06": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q08": {
+   "pages": 0.75,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 3500
+  },
+  "Q09": {
+   "pages": 0.2857142857142857,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q11": {
+   "pages": 0.16666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q12": {
+   "pages": 0.3333333333333333,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q13": {
+   "pages": 0.3333333333333333,
+   "papers": 0.5,
+   "mrr": 0.5,
+   "tokens": 3500
+  },
+  "Q14": {
+   "pages": 0.2,
+   "papers": 0.25,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q15": {
+   "pages": 0.2857142857142857,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 3500
+  },
+  "Q16": {
+   "pages": 0.2,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3500
+  },
+  "Q17": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.25,
+   "tokens": 3500
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3501
+  },
+  "Q20": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 3500
+  },
+  "Q31": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3500
+  },
+  "Q32": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 2883
+  },
+  "Q35": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3498
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3500
+  },
+  "Q42": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q43": {
+   "pages": 0.16666666666666666,
+   "papers": 0.6666666666666666,
+   "mrr": 0.5,
+   "tokens": 3500
+  },
+  "Q44": {
+   "pages": 0.75,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3500
+  },
+  "Q45": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3501
+  }
+ },
+ "token K=10": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 6998
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 7000
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 6494
+  },
+  "Q06": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 7000
+  },
+  "Q09": {
+   "pages": 0.8571428571428571,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q11": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q12": {
+   "pages": 0.5555555555555556,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q13": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 7000
+  },
+  "Q14": {
+   "pages": 0.2,
+   "papers": 0.25,
+   "mrr": 1.0,
+   "tokens": 7001
+  },
+  "Q15": {
+   "pages": 0.2857142857142857,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 7000
+  },
+  "Q16": {
+   "pages": 0.4,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 7000
+  },
+  "Q17": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.25,
+   "tokens": 6494
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7001
+  },
+  "Q20": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 7000
+  },
+  "Q31": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 7000
+  },
+  "Q32": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 6381
+  },
+  "Q35": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 6645
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 6998
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 7000
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q43": {
+   "pages": 0.16666666666666666,
+   "papers": 0.6666666666666666,
+   "mrr": 0.5,
+   "tokens": 7001
+  },
+  "Q44": {
+   "pages": 0.75,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7000
+  },
+  "Q45": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 7001
+  }
+ },
+ "token K=20": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 13998
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14000
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 13946
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 13494
+  },
+  "Q06": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14000
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14001
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 14001
+  },
+  "Q09": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 13938
+  },
+  "Q11": {
+   "pages": 0.8333333333333334,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14001
+  },
+  "Q12": {
+   "pages": 0.7777777777777778,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14000
+  },
+  "Q13": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 14000
+  },
+  "Q14": {
+   "pages": 0.3,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 14001
+  },
+  "Q15": {
+   "pages": 0.42857142857142855,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 14000
+  },
+  "Q16": {
+   "pages": 0.8,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 14001
+  },
+  "Q17": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.25,
+   "tokens": 13495
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14001
+  },
+  "Q20": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 13998
+  },
+  "Q31": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 14000
+  },
+  "Q32": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14000
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 13381
+  },
+  "Q35": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 13645
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14000
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 13998
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 13998
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14000
+  },
+  "Q43": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 14001
+  },
+  "Q44": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 14000
+  },
+  "Q45": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 14001
+  }
+ },
+ "paragraph K=1": {
+  "Q01": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 143
+  },
+  "Q02": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 156
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 169
+  },
+  "Q04": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 119
+  },
+  "Q06": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 89
+  },
+  "Q07": {
+   "pages": 0.2,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 270
+  },
+  "Q08": {
+   "pages": 0.25,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 85
+  },
+  "Q09": {
+   "pages": 0.14285714285714285,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 247
+  },
+  "Q11": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 126
+  },
+  "Q12": {
+   "pages": 0.1111111111111111,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 96
+  },
+  "Q13": {
+   "pages": 0.16666666666666666,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 173
+  },
+  "Q14": {
+   "pages": 0.0,
+   "papers": 0.25,
+   "mrr": 0,
+   "tokens": 247
+  },
+  "Q15": {
+   "pages": 0.14285714285714285,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 128
+  },
+  "Q16": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 105
+  },
+  "Q17": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 109
+  },
+  "Q18": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 140
+  },
+  "Q20": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 136
+  },
+  "Q31": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 129
+  },
+  "Q32": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 72
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 193
+  },
+  "Q35": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 141
+  },
+  "Q37": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 156
+  },
+  "Q39": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 210
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 128
+  },
+  "Q42": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 135
+  },
+  "Q43": {
+   "pages": 0.16666666666666666,
+   "papers": 0.3333333333333333,
+   "mrr": 1.0,
+   "tokens": 136
+  },
+  "Q44": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 94
+  },
+  "Q45": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 243
+  }
+ },
+ "paragraph K=3": {
+  "Q01": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 377
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 464
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 459
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 446
+  },
+  "Q06": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 208
+  },
+  "Q07": {
+   "pages": 0.4,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 632
+  },
+  "Q08": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 610
+  },
+  "Q09": {
+   "pages": 0.2857142857142857,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 615
+  },
+  "Q11": {
+   "pages": 0.16666666666666666,
+   "papers": 0.5,
+   "mrr": 0.3333333333333333,
+   "tokens": 522
+  },
+  "Q12": {
+   "pages": 0.2222222222222222,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 352
+  },
+  "Q13": {
+   "pages": 0.16666666666666666,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 400
+  },
+  "Q14": {
+   "pages": 0.0,
+   "papers": 0.25,
+   "mrr": 0,
+   "tokens": 561
+  },
+  "Q15": {
+   "pages": 0.14285714285714285,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 522
+  },
+  "Q16": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 397
+  },
+  "Q17": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 303
+  },
+  "Q18": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 382
+  },
+  "Q20": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 448
+  },
+  "Q31": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 495
+  },
+  "Q32": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 274
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 511
+  },
+  "Q35": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 538
+  },
+  "Q37": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 398
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 644
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 312
+  },
+  "Q42": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 490
+  },
+  "Q43": {
+   "pages": 0.16666666666666666,
+   "papers": 0.3333333333333333,
+   "mrr": 1.0,
+   "tokens": 410
+  },
+  "Q44": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 374
+  },
+  "Q45": {
+   "pages": 0.3333333333333333,
+   "papers": 0.5,
+   "mrr": 0.3333333333333333,
+   "tokens": 478
+  }
+ },
+ "paragraph K=5": {
+  "Q01": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 595
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 849
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 690
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 627
+  },
+  "Q06": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 586
+  },
+  "Q07": {
+   "pages": 0.8,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 877
+  },
+  "Q08": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 790
+  },
+  "Q09": {
+   "pages": 0.2857142857142857,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 867
+  },
+  "Q11": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 751
+  },
+  "Q12": {
+   "pages": 0.2222222222222222,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 685
+  },
+  "Q13": {
+   "pages": 0.16666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 621
+  },
+  "Q14": {
+   "pages": 0.0,
+   "papers": 0.25,
+   "mrr": 0,
+   "tokens": 818
+  },
+  "Q15": {
+   "pages": 0.14285714285714285,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 769
+  },
+  "Q16": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 681
+  },
+  "Q17": {
+   "pages": 0.0,
+   "papers": 0.5,
+   "mrr": 0,
+   "tokens": 583
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 728
+  },
+  "Q20": {
+   "pages": 0.25,
+   "papers": 1.0,
+   "mrr": 0.2,
+   "tokens": 772
+  },
+  "Q31": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 776
+  },
+  "Q32": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 515
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 726
+  },
+  "Q35": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 932
+  },
+  "Q37": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 846
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 1121
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 700
+  },
+  "Q42": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 891
+  },
+  "Q43": {
+   "pages": 0.16666666666666666,
+   "papers": 0.3333333333333333,
+   "mrr": 1.0,
+   "tokens": 820
+  },
+  "Q44": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.25,
+   "tokens": 693
+  },
+  "Q45": {
+   "pages": 0.3333333333333333,
+   "papers": 0.5,
+   "mrr": 0.3333333333333333,
+   "tokens": 712
+  }
+ },
+ "paragraph K=10": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1273
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 1648
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1496
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1201
+  },
+  "Q06": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 1423
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1781
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1354
+  },
+  "Q09": {
+   "pages": 0.7142857142857143,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1432
+  },
+  "Q11": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 1849
+  },
+  "Q12": {
+   "pages": 0.4444444444444444,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 1224
+  },
+  "Q13": {
+   "pages": 0.16666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1692
+  },
+  "Q14": {
+   "pages": 0.1,
+   "papers": 0.25,
+   "mrr": 0.16666666666666666,
+   "tokens": 1259
+  },
+  "Q15": {
+   "pages": 0.42857142857142855,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1486
+  },
+  "Q16": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 1499
+  },
+  "Q17": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 1356
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1605
+  },
+  "Q20": {
+   "pages": 0.75,
+   "papers": 1.0,
+   "mrr": 0.2,
+   "tokens": 1367
+  },
+  "Q31": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1541
+  },
+  "Q32": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1184
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 1712
+  },
+  "Q35": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 1873
+  },
+  "Q37": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1494
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 1848
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1338
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 1806
+  },
+  "Q43": {
+   "pages": 0.16666666666666666,
+   "papers": 0.3333333333333333,
+   "mrr": 1.0,
+   "tokens": 1482
+  },
+  "Q44": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.25,
+   "tokens": 1328
+  },
+  "Q45": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 1424
+  }
+ },
+ "paragraph K=20": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2801
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 2638
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3023
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2505
+  },
+  "Q06": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 2793
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3459
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2512
+  },
+  "Q09": {
+   "pages": 0.8571428571428571,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2657
+  },
+  "Q11": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 2973
+  },
+  "Q12": {
+   "pages": 0.5555555555555556,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2593
+  },
+  "Q13": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3204
+  },
+  "Q14": {
+   "pages": 0.2,
+   "papers": 0.25,
+   "mrr": 0.16666666666666666,
+   "tokens": 2310
+  },
+  "Q15": {
+   "pages": 0.5714285714285714,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3523
+  },
+  "Q16": {
+   "pages": 0.4,
+   "papers": 1.0,
+   "mrr": 0.07692307692307693,
+   "tokens": 2749
+  },
+  "Q17": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.05555555555555555,
+   "tokens": 2541
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2866
+  },
+  "Q20": {
+   "pages": 0.75,
+   "papers": 1.0,
+   "mrr": 0.2,
+   "tokens": 2681
+  },
+  "Q31": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3405
+  },
+  "Q32": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2747
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 3308
+  },
+  "Q35": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3446
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 2773
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 3404
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3020
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3402
+  },
+  "Q43": {
+   "pages": 0.3333333333333333,
+   "papers": 0.6666666666666666,
+   "mrr": 1.0,
+   "tokens": 2869
+  },
+  "Q44": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.25,
+   "tokens": 2756
+  },
+  "Q45": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 3082
+  }
+ },
+ "paper N=1": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 16686
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 10419
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 19314
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 23734
+  },
+  "Q06": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 18262
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 30248
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 11717
+  },
+  "Q09": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 22353
+  },
+  "Q11": {
+   "pages": 0.5,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 9808
+  },
+  "Q12": {
+   "pages": 0.6666666666666666,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 19314
+  },
+  "Q13": {
+   "pages": 0.5,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 7604
+  },
+  "Q14": {
+   "pages": 0.3,
+   "papers": 0.25,
+   "mrr": 1.0,
+   "tokens": 22353
+  },
+  "Q15": {
+   "pages": 0.42857142857142855,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 10419
+  },
+  "Q16": {
+   "pages": 0.8,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 19101
+  },
+  "Q17": {
+   "pages": 0.5,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 23734
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7604
+  },
+  "Q20": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 41850
+  },
+  "Q31": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 18262
+  },
+  "Q32": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 16686
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 11717
+  },
+  "Q35": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 11717
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 18262
+  },
+  "Q39": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 16686
+  },
+  "Q40": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 16686
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 19393
+  },
+  "Q43": {
+   "pages": 0.3333333333333333,
+   "papers": 0.3333333333333333,
+   "mrr": 1.0,
+   "tokens": 29568
+  },
+  "Q44": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 41850
+  },
+  "Q45": {
+   "pages": 0.3333333333333333,
+   "papers": 0.5,
+   "mrr": 1.0,
+   "tokens": 11717
+  }
+ },
+ "paper N=2": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 28403
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 22136
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 35915
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 43127
+  },
+  "Q06": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 28070
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 37852
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 29979
+  },
+  "Q09": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 34070
+  },
+  "Q11": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 28070
+  },
+  "Q12": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 35915
+  },
+  "Q13": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 37852
+  },
+  "Q14": {
+   "pages": 0.3,
+   "papers": 0.25,
+   "mrr": 1.0,
+   "tokens": 32161
+  },
+  "Q15": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 40667
+  },
+  "Q16": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 42835
+  },
+  "Q17": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 53302
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 37172
+  },
+  "Q20": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 71418
+  },
+  "Q31": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 28070
+  },
+  "Q32": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 36079
+  },
+  "Q34": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 28318
+  },
+  "Q35": {
+   "pages": 0.0,
+   "papers": 0.0,
+   "mrr": 0,
+   "tokens": 28403
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 28070
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 46934
+  },
+  "Q40": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 28403
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 61243
+  },
+  "Q43": {
+   "pages": 0.6666666666666666,
+   "papers": 0.6666666666666666,
+   "mrr": 1.0,
+   "tokens": 71418
+  },
+  "Q44": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 65584
+  },
+  "Q45": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 41965
+  }
+ },
+ "paper N=3": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 46665
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 31944
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 77765
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 84977
+  },
+  "Q06": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 38489
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 49569
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 46665
+  },
+  "Q09": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 43878
+  },
+  "Q11": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 38489
+  },
+  "Q12": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 58268
+  },
+  "Q13": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 49569
+  },
+  "Q14": {
+   "pages": 0.3,
+   "papers": 0.25,
+   "mrr": 1.0,
+   "tokens": 42580
+  },
+  "Q15": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 63020
+  },
+  "Q16": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 62228
+  },
+  "Q17": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 95152
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 46980
+  },
+  "Q20": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 81226
+  },
+  "Q31": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 47463
+  },
+  "Q32": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 65647
+  },
+  "Q34": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 45004
+  },
+  "Q35": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 46665
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 47463
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 56742
+  },
+  "Q40": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 46665
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 71051
+  },
+  "Q43": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 90811
+  },
+  "Q44": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 95152
+  },
+  "Q45": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 83815
+  }
+ },
+ "paper N=5": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 93514
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 80905
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 111835
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 111682
+  },
+  "Q06": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 62779
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 81730
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 84517
+  },
+  "Q09": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 68168
+  },
+  "Q11": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 66807
+  },
+  "Q12": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 86338
+  },
+  "Q13": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 101227
+  },
+  "Q14": {
+   "pages": 0.8,
+   "papers": 0.75,
+   "mrr": 1.0,
+   "tokens": 91090
+  },
+  "Q15": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 84545
+  },
+  "Q16": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 113886
+  },
+  "Q17": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 124964
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 108223
+  },
+  "Q20": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 108223
+  },
+  "Q31": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 75781
+  },
+  "Q32": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 95626
+  },
+  "Q34": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 71922
+  },
+  "Q35": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 96227
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 88748
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 86721
+  },
+  "Q40": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 86041
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 108223
+  },
+  "Q43": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 108223
+  },
+  "Q44": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 121857
+  },
+  "Q45": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 115153
+  }
+ },
+ "paragraph budget": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3514
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3462
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3529
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3502
+  },
+  "Q06": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3526
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3794
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3481
+  },
+  "Q09": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3556
+  },
+  "Q11": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 3488
+  },
+  "Q12": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3608
+  },
+  "Q13": {
+   "pages": 0.3333333333333333,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3496
+  },
+  "Q14": {
+   "pages": 0.2,
+   "papers": 0.25,
+   "mrr": 0.16666666666666666,
+   "tokens": 3442
+  },
+  "Q15": {
+   "pages": 0.5714285714285714,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3523
+  },
+  "Q16": {
+   "pages": 0.4,
+   "papers": 1.0,
+   "mrr": 0.07692307692307693,
+   "tokens": 3606
+  },
+  "Q17": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 0.05555555555555555,
+   "tokens": 3503
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3490
+  },
+  "Q20": {
+   "pages": 0.75,
+   "papers": 1.0,
+   "mrr": 0.2,
+   "tokens": 3535
+  },
+  "Q31": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3491
+  },
+  "Q32": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3602
+  },
+  "Q34": {
+   "pages": 0.0,
+   "papers": 1.0,
+   "mrr": 0,
+   "tokens": 3519
+  },
+  "Q35": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.5,
+   "tokens": 3567
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3567
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 3605
+  },
+  "Q40": {
+   "pages": 0.5,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3570
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 3517
+  },
+  "Q43": {
+   "pages": 0.3333333333333333,
+   "papers": 0.6666666666666666,
+   "mrr": 1.0,
+   "tokens": 3493
+  },
+  "Q44": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 0.25,
+   "tokens": 3584
+  },
+  "Q45": {
+   "pages": 0.6666666666666666,
+   "papers": 1.0,
+   "mrr": 0.3333333333333333,
+   "tokens": 3463
+  }
+ },
+ "no_embedding": {
+  "Q01": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 16686
+  },
+  "Q02": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 10419
+  },
+  "Q03": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 19314
+  },
+  "Q04": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 23734
+  },
+  "Q07": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 30248
+  },
+  "Q08": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 11717
+  },
+  "Q09": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 22353
+  },
+  "Q11": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 28070
+  },
+  "Q12": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 35915
+  },
+  "Q13": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 37852
+  },
+  "Q06": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 9808
+  },
+  "Q14": {
+   "pages": 0.7,
+   "papers": 0.75,
+   "mrr": 1.0,
+   "tokens": 57301
+  },
+  "Q15": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 40667
+  },
+  "Q16": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 42835
+  },
+  "Q17": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 53302
+  },
+  "Q18": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 7604
+  },
+  "Q20": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 41850
+  },
+  "Q31": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 18262
+  },
+  "Q32": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 16686
+  },
+  "Q34": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 16601
+  },
+  "Q35": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 18262
+  },
+  "Q37": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 34948
+  },
+  "Q40": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 16686
+  },
+  "Q42": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 19393
+  },
+  "Q43": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 90811
+  },
+  "Q44": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 41850
+  },
+  "Q45": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 41965
+  },
+  "Q39": {
+   "pages": 1.0,
+   "papers": 1.0,
+   "mrr": 1.0,
+   "tokens": 46934
+  }
+ }
+}

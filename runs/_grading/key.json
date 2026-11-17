@@ -1,0 +1,657 @@
+{
+ "runs": [
+  "runs/baseline",
+  "runs/baseline_repeat",
+  "runs/chunk_paragraph",
+  "runs/chunk_paragraph_matched",
+  "runs/chunk_paper",
+  "runs/no_embedding"
+ ],
+ "seed": "0",
+ "labels": {
+  "Q01": {
+   "A": [
+    "runs/baseline_repeat"
+   ],
+   "B": [
+    "runs/chunk_paper"
+   ],
+   "C": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "D": [
+    "runs/baseline"
+   ],
+   "E": [
+    "runs/chunk_paragraph"
+   ],
+   "F": [
+    "runs/no_embedding"
+   ]
+  },
+  "Q02": {
+   "A": [
+    "runs/no_embedding"
+   ],
+   "B": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "C": [
+    "runs/baseline"
+   ],
+   "D": [
+    "runs/chunk_paragraph"
+   ],
+   "E": [
+    "runs/chunk_paper"
+   ],
+   "F": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q03": {
+   "A": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "B": [
+    "runs/chunk_paper"
+   ],
+   "C": [
+    "runs/baseline"
+   ],
+   "D": [
+    "runs/chunk_paragraph"
+   ],
+   "E": [
+    "runs/no_embedding"
+   ],
+   "F": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q04": {
+   "A": [
+    "runs/chunk_paragraph"
+   ],
+   "B": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "C": [
+    "runs/no_embedding"
+   ],
+   "D": [
+    "runs/chunk_paper"
+   ],
+   "E": [
+    "runs/baseline"
+   ],
+   "F": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q06": {
+   "A": [
+    "runs/no_embedding"
+   ],
+   "B": [
+    "runs/baseline"
+   ],
+   "C": [
+    "runs/chunk_paragraph"
+   ],
+   "D": [
+    "runs/baseline_repeat"
+   ],
+   "E": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "F": [
+    "runs/chunk_paper"
+   ]
+  },
+  "Q07": {
+   "A": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "B": [
+    "runs/chunk_paragraph"
+   ],
+   "C": [
+    "runs/baseline"
+   ],
+   "D": [
+    "runs/chunk_paper"
+   ],
+   "E": [
+    "runs/baseline_repeat"
+   ],
+   "F": [
+    "runs/no_embedding"
+   ]
+  },
+  "Q08": {
+   "A": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "B": [
+    "runs/baseline_repeat"
+   ],
+   "C": [
+    "runs/chunk_paper"
+   ],
+   "D": [
+    "runs/chunk_paragraph"
+   ],
+   "E": [
+    "runs/baseline"
+   ],
+   "F": [
+    "runs/no_embedding"
+   ]
+  },
+  "Q09": {
+   "A": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "B": [
+    "runs/baseline"
+   ],
+   "C": [
+    "runs/chunk_paper"
+   ],
+   "D": [
+    "runs/no_embedding"
+   ],
+   "E": [
+    "runs/chunk_paragraph"
+   ],
+   "F": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q11": {
+   "A": [
+    "runs/baseline_repeat"
+   ],
+   "B": [
+    "runs/no_embedding"
+   ],
+   "C": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "D": [
+    "runs/chunk_paper"
+   ],
+   "E": [
+    "runs/chunk_paragraph"
+   ],
+   "F": [
+    "runs/baseline"
+   ]
+  },
+  "Q12": {
+   "A": [
+    "runs/no_embedding"
+   ],
+   "B": [
+    "runs/chunk_paragraph"
+   ],
+   "C": [
+    "runs/chunk_paper"
+   ],
+   "D": [
+    "runs/baseline_repeat"
+   ],
+   "E": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "F": [
+    "runs/baseline"
+   ]
+  },
+  "Q13": {
+   "A": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "B": [
+    "runs/chunk_paper"
+   ],
+   "C": [
+    "runs/chunk_paragraph"
+   ],
+   "D": [
+    "runs/no_embedding"
+   ],
+   "E": [
+    "runs/baseline_repeat"
+   ],
+   "F": [
+    "runs/baseline"
+   ]
+  },
+  "Q14": {
+   "A": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "B": [
+    "runs/chunk_paper"
+   ],
+   "C": [
+    "runs/baseline_repeat"
+   ],
+   "D": [
+    "runs/no_embedding"
+   ],
+   "E": [
+    "runs/chunk_paragraph"
+   ],
+   "F": [
+    "runs/baseline"
+   ]
+  },
+  "Q15": {
+   "A": [
+    "runs/chunk_paragraph"
+   ],
+   "B": [
+    "runs/no_embedding"
+   ],
+   "C": [
+    "runs/baseline"
+   ],
+   "D": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "E": [
+    "runs/chunk_paper"
+   ],
+   "F": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q16": {
+   "A": [
+    "runs/baseline_repeat"
+   ],
+   "B": [
+    "runs/no_embedding"
+   ],
+   "C": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "D": [
+    "runs/chunk_paragraph"
+   ],
+   "E": [
+    "runs/chunk_paper"
+   ],
+   "F": [
+    "runs/baseline"
+   ]
+  },
+  "Q17": {
+   "A": [
+    "runs/chunk_paragraph"
+   ],
+   "B": [
+    "runs/baseline"
+   ],
+   "C": [
+    "runs/chunk_paper"
+   ],
+   "D": [
+    "runs/no_embedding"
+   ],
+   "E": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "F": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q18": {
+   "A": [
+    "runs/baseline_repeat"
+   ],
+   "B": [
+    "runs/no_embedding"
+   ],
+   "C": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "D": [
+    "runs/chunk_paper"
+   ],
+   "E": [
+    "runs/baseline"
+   ],
+   "F": [
+    "runs/chunk_paragraph"
+   ]
+  },
+  "Q20": {
+   "A": [
+    "runs/chunk_paragraph"
+   ],
+   "B": [
+    "runs/baseline"
+   ],
+   "C": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "D": [
+    "runs/no_embedding"
+   ],
+   "E": [
+    "runs/chunk_paper"
+   ],
+   "F": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q21": {
+   "A": [
+    "runs/baseline",
+    "runs/chunk_paragraph",
+    "runs/chunk_paragraph_matched",
+    "runs/chunk_paper",
+    "runs/no_embedding"
+   ],
+   "B": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q23": {
+   "A": [
+    "runs/baseline",
+    "runs/chunk_paragraph",
+    "runs/chunk_paragraph_matched",
+    "runs/chunk_paper",
+    "runs/no_embedding"
+   ],
+   "B": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q24": {
+   "A": [
+    "runs/baseline_repeat"
+   ],
+   "B": [
+    "runs/baseline",
+    "runs/chunk_paragraph",
+    "runs/chunk_paragraph_matched",
+    "runs/chunk_paper",
+    "runs/no_embedding"
+   ]
+  },
+  "Q25": {
+   "A": [
+    "runs/baseline_repeat"
+   ],
+   "B": [
+    "runs/baseline",
+    "runs/chunk_paragraph",
+    "runs/chunk_paragraph_matched",
+    "runs/chunk_paper",
+    "runs/no_embedding"
+   ]
+  },
+  "Q27": {
+   "A": [
+    "runs/baseline",
+    "runs/chunk_paragraph",
+    "runs/chunk_paragraph_matched",
+    "runs/chunk_paper",
+    "runs/no_embedding"
+   ],
+   "B": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q29": {
+   "A": [
+    "runs/baseline",
+    "runs/chunk_paragraph",
+    "runs/chunk_paragraph_matched",
+    "runs/chunk_paper",
+    "runs/no_embedding"
+   ],
+   "B": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q30": {
+   "A": [
+    "runs/baseline",
+    "runs/chunk_paragraph",
+    "runs/chunk_paragraph_matched",
+    "runs/chunk_paper",
+    "runs/no_embedding"
+   ],
+   "B": [
+    "runs/baseline_repeat"
+   ]
+  },
+  "Q31": {
+   "A": [
+    "runs/baseline"
+   ],
+   "B": [
+    "runs/no_embedding"
+   ],
+   "C": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "D": [
+    "runs/chunk_paragraph"
+   ],
+   "E": [
+    "runs/baseline_repeat"
+   ],
+   "F": [
+    "runs/chunk_paper"
+   ]
+  },
+  "Q32": {
+   "A": [
+    "runs/baseline_repeat"
+   ],
+   "B": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "C": [
+    "runs/chunk_paper"
+   ],
+   "D": [
+    "runs/chunk_paragraph"
+   ],
+   "E": [
+    "runs/no_embedding"
+   ],
+   "F": [
+    "runs/baseline"
+   ]
+  },
+  "Q34": {
+   "A": [
+    "runs/chunk_paragraph"
+   ],
+   "B": [
+    "runs/chunk_paper"
+   ],
+   "C": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "D": [
+    "runs/no_embedding"
+   ],
+   "E": [
+    "runs/baseline_repeat"
+   ],
+   "F": [
+    "runs/baseline"
+   ]
+  },
+  "Q35": {
+   "A": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "B": [
+    "runs/baseline"
+   ],
+   "C": [
+    "runs/baseline_repeat"
+   ],
+   "D": [
+    "runs/chunk_paragraph"
+   ],
+   "E": [
+    "runs/no_embedding"
+   ],
+   "F": [
+    "runs/chunk_paper"
+   ]
+  },
+  "Q37": {
+   "A": [
+    "runs/chunk_paper"
+   ],
+   "B": [
+    "runs/chunk_paragraph"
+   ],
+   "C": [
+    "runs/baseline_repeat"
+   ],
+   "D": [
+    "runs/no_embedding"
+   ],
+   "E": [
+    "runs/baseline"
+   ],
+   "F": [
+    "runs/chunk_paragraph_matched"
+   ]
+  },
+  "Q39": {
+   "A": [
+    "runs/baseline_repeat"
+   ],
+   "B": [
+    "runs/chunk_paragraph"
+   ],
+   "C": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "D": [
+    "runs/chunk_paper"
+   ],
+   "E": [
+    "runs/no_embedding"
+   ],
+   "F": [
+    "runs/baseline"
+   ]
+  },
+  "Q40": {
+   "A": [
+    "runs/chunk_paper"
+   ],
+   "B": [
+    "runs/chunk_paragraph"
+   ],
+   "C": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "D": [
+    "runs/baseline_repeat"
+   ],
+   "E": [
+    "runs/baseline"
+   ],
+   "F": [
+    "runs/no_embedding"
+   ]
+  },
+  "Q42": {
+   "A": [
+    "runs/chunk_paper"
+   ],
+   "B": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "C": [
+    "runs/baseline"
+   ],
+   "D": [
+    "runs/baseline_repeat"
+   ],
+   "E": [
+    "runs/chunk_paragraph"
+   ],
+   "F": [
+    "runs/no_embedding"
+   ]
+  },
+  "Q43": {
+   "A": [
+    "runs/chunk_paragraph"
+   ],
+   "B": [
+    "runs/baseline_repeat"
+   ],
+   "C": [
+    "runs/no_embedding"
+   ],
+   "D": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "E": [
+    "runs/chunk_paper"
+   ],
+   "F": [
+    "runs/baseline"
+   ]
+  },
+  "Q44": {
+   "A": [
+    "runs/no_embedding"
+   ],
+   "B": [
+    "runs/chunk_paragraph"
+   ],
+   "C": [
+    "runs/baseline"
+   ],
+   "D": [
+    "runs/baseline_repeat"
+   ],
+   "E": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "F": [
+    "runs/chunk_paper"
+   ]
+  },
+  "Q45": {
+   "A": [
+    "runs/baseline"
+   ],
+   "B": [
+    "runs/chunk_paper"
+   ],
+   "C": [
+    "runs/chunk_paragraph"
+   ],
+   "D": [
+    "runs/baseline_repeat"
+   ],
+   "E": [
+    "runs/chunk_paragraph_matched"
+   ],
+   "F": [
+    "runs/no_embedding"
+   ]
+  }
+ }
+}

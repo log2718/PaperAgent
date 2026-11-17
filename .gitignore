@@ -15,6 +15,8 @@ __pycache__/
 # reproducible artifacts (rebuild with src/ingest.py and src/retrieve.py)
 data/index.faiss
 data/embeddings.npy
+data/*/index.faiss
+data/_tmp*/
 
 # source PDFs live outside the repo (~/Desktop/ML/Papers/)
 *.pdf

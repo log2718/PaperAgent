@@ -19,7 +19,7 @@ import traceback
 
 import openpyxl
 
-from ingest import PAPERS_XLSX, ROOT
+from ingest import CONFIG_MODE, PAPERS_XLSX, ROOT, data_dir
 from sql_tool import query_timm
 
 ABSTAIN = re.compile(r"(does not|do not|doesn't|don't|did not|not) (establish|show|report|state|provide|specify|support)|"
@@ -32,7 +32,7 @@ def load_sheet(name):
 
 
 def run(args):
-    from answer import answer_question                       # imported late: loads the embedding model
+    from answer import LimitReached, answer_question         # imported late: loads the embedding model
     questions = load_sheet("Questions")
     if args.ids:
         chosen = [q for q in questions if q["question_id"] in args.ids]
@@ -44,11 +44,20 @@ def run(args):
     out.mkdir(parents=True, exist_ok=True)
     path = out / "results.jsonl"
     done = {json.loads(l)["question_id"] for l in open(path)} if path.exists() else set()
+    if args.reuse:                                           # table-only questions do not use retrieval: copy, do not re-run
+        src = {r["question_id"]: r for r in map(json.loads, open(ROOT / args.reuse / "results.jsonl", encoding="utf-8"))}
+        with open(path, "a", encoding="utf-8") as f:
+            for q in chosen:
+                if q["data_source_type"] == "table-only" and q["question_id"] not in done:
+                    f.write(json.dumps({**src[q["question_id"]], "reused_from": args.reuse}, ensure_ascii=False) + "\n")
+                    done.add(q["question_id"])
     for q in chosen:
         if q["question_id"] in done:
             continue
         try:
-            rec = answer_question(q)
+            rec = answer_question(q, args.config)
+        except LimitReached as e:                            # nothing more can run: stop without logging a failure record
+            sys.exit(f"stopped at {q['question_id']}: {e}. Run the same command again after the limit resets (finished questions are skipped).")
         except Exception as e:                               # keep going; the failure is logged
             rec = {"question_id": q["question_id"], "question": q["question"], "source_type": q["data_source_type"],
                    "error": f"{type(e).__name__}: {e}", "trace": traceback.format_exc()[-600:]}
@@ -56,6 +65,35 @@ def run(args):
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
         print(f"{rec['question_id']} {rec['source_type']:<10} {rec.get('latency_s', '-')}s {'ERROR' if 'error' in rec else 'ok'}", flush=True)
     report(args.out)
+
+
+def cost(args):
+    """runs/cost_table.md: per-configuration cost over the text-involving questions, plus one-time chunking and indexing cost."""
+    meta = {q["question_id"]: q for q in load_sheet("Questions")}
+    lines = ["# Cost per configuration", "",
+             "Per-question figures are means over the text-involving development questions that were run (not copied from another run) "
+             "with usage logged. `cost_usd` is the API list-price equivalent reported by the CLI, not an actual bill. Input tokens are "
+             "uncached + cache-creation + cache-read. One-time cost is chunking (and for the vector configurations the embedding and index "
+             "build) on this machine; `no_embedding` only needs the paper texts.", "",
+             "| Run | Questions | Mean latency (s) | Total latency (min) | LLM calls | Input tokens | Output tokens | Cost (USD) mean | Cost (USD) total | One-time chunk (s) | One-time index (s) | Index size |",
+             "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    for d in args.runs:
+        recs = [r for r in map(json.loads, open(ROOT / d / "results.jsonl", encoding="utf-8"))
+                if "usage" in r and "error" not in r and "reused_from" not in r and meta[r["question_id"]]["data_source_type"] != "table-only"]
+        if not recs:
+            lines.append(f"| {d} | 0 | - | - | - | - | - | - | - | - | - | - |"); continue
+        n, u = len(recs), lambda k: sum(r["usage"].get(k, 0) for r in recs)
+        tokens_in = u("input_tokens") + u("cache_creation_tokens") + u("cache_read_tokens")
+        lat = sum(r["latency_s"] for r in recs)
+        cfg = recs[0].get("config", "token")
+        sp = data_dir(CONFIG_MODE[cfg]) / "stats.json"
+        st = json.loads(sp.read_text()) if sp.exists() else {}
+        idx = "-" if cfg == "no_embedding" else f"{st.get('index_seconds', '-')}"
+        size = "-" if cfg == "no_embedding" or "index_bytes" not in st else f"{st['index_bytes'] / 1e6:.2f} MB"
+        lines.append(f"| {d} | {n} | {lat / n:.1f} | {lat / 60:.1f} | {u('calls') / n:.1f} | {tokens_in / n:,.0f} | {u('output_tokens') / n:,.0f} | "
+                     f"{u('cost_usd') / n:.3f} | {u('cost_usd'):.2f} | {st.get('ingest_seconds', '-')} | {idx} | {size} |")
+    (ROOT / "runs" / "cost_table.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print("\n".join(lines))
 
 
 def gold_pages():
@@ -129,7 +167,8 @@ def report(out_dir):
             lines += [f"**ERROR.** {r['error']}", ""]; continue
         lines += [f"**System answer.** {r['answer']}", ""]
         if r["retrieved"]:
-            lines.append("**Retrieved:** " + "; ".join(f"{h['paper']} p.{h['pages']} ({h['score']:.2f})" for h in r["retrieved"])
+            lines.append("**Retrieved:** " + "; ".join(f"{h['paper']} p.{h['pages']}" + (f" ({h['score']:.2f})" if h["score"] is not None else "")
+                                                        for h in r["retrieved"])
                          + f" | gold page hit: {hit:.2f}")
         if r["sql_attempts"]:
             lines.append("**SQL:** `" + r["sql_attempts"][-1]["sql"].replace("\n", " ") + "`" +
@@ -146,7 +185,11 @@ if __name__ == "__main__":
     r.add_argument("--ids", nargs="*")
     r.add_argument("--split", default="development", choices=["development", "held-out"])
     r.add_argument("--out", required=True)
+    r.add_argument("--config", default="token", choices=list(CONFIG_MODE))
+    r.add_argument("--reuse", help="run folder to copy table-only records from (they do not depend on retrieval)")
     p = sub.add_parser("report")
     p.add_argument("out")
+    c = sub.add_parser("cost")
+    c.add_argument("runs", nargs="+")
     a = ap.parse_args()
-    run(a) if a.cmd == "run" else report(a.out)
+    {"run": run, "report": lambda a: report(a.out), "cost": cost}[a.cmd](a)

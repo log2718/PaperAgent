@@ -1,12 +1,12 @@
 # Report: runs/baseline
 
-33 questions, 0 errors, mean latency 21.4 s.
+35 questions, 0 errors, mean latency 20.6 s.
 
 | Source type | Retrieval page hit | SQL value overlap | Answers with abstention wording |
 |---|---|---|---|
-| text-only | 0.58 (n=19) | - | 13 of 19 |
+| text-only | 0.59 (n=21) | - | 13 of 21 |
 | table-only | - | 0.71 (n=7) | 0 of 7 |
-| text+table | 0.62 (n=7) | 0.83 (n=7) | 5 of 7 |
+| text+table | 0.62 (n=7) | 0.73 (n=7) | 4 of 7 |
 
 Insufficient-evidence questions (Q18, Q20): 2 of 2 answers use abstention wording (keyword heuristic, check by reading).
 
@@ -44,50 +44,6 @@ Based on this, they instead **conjecture** that "the deep plain nets may have ex
 
 **Retrieved:** ResNet p.5 (0.84); ResNet p.5-6 (0.83); ResNet p.7-8 (0.81); ResNet p.6 (0.81); ResNet p.3-4 (0.80) | gold page hit: 1.00
 *20.1 s*
-
-## Q02 (text-only, factual, hard, answerable: yes)
-
-**Question.** How does BabyCL's Labeled-S 4AFC accuracy compare with the offline CVCL upper bound and with the one-pass and compute-matched streaming baselines, and do the numbers in the text match those in Table 1?
-
-**Reference answer.** Table 1 (4AFC, Labeled-S): Offline CVCL (i.i.d., 400 epochs) 57.31 +/- 1.13; One-pass CVCL (streaming) 27.52 +/- 3.12; CL-CVCL (compute-matched) 36.41 +/- 2.31; BabyCL with k=4 41.08 +/- 1.79 and with k=8 43.38 +/- 1.47. The authors conclude that BabyCL beats the streaming baselines under a matched optimization budget and substantially narrows, but does not close, the gap to offline training; since CL-CVCL matches BabyCL's gradient budget, the gap 'cannot be explained by gradient count alone'. The Section 4.2 text does not match Table 1: it gives One-pass CVCL 25.68%, CL-CVCL 35.32%, BabyCL 44.46% (k=8) and offline CVCL 57.45%, and a 2.6-point gain from k=4 to k=8 (Table 1 differs by 2.30). The paper does not explain the discrepancy.
-
-**System answer.** ## Comparison of BabyCL to the baselines
-
-**As reported in the text (Section 4.2, main results):**
-- **Offline CVCL** (i.i.d., 400 epochs) = **57.45%** — serves as the upper bound [BabyCL, p.6-7].
-- **One-pass CVCL** (naive streaming, no replay) = **25.68%** — "collapses," confirming that i.i.d.-style training does not transfer to streaming [BabyCL, p.6-7].
-- **CL-CVCL** (compute-matched, replay added to match BabyCL's gradient budget at k=8) = **35.32%** [BabyCL, p.6-7].
-- **BabyCL (k=8)** = **44.46%** [BabyCL, p.6-7].
-
-From these text figures:
-- BabyCL vs. offline upper bound: 57.45 − 44.46 = **12.99 points below** the offline ceiling, described as "substantially clos[ing] the gap... but does not match it" [BabyCL, p.6-7].
-- BabyCL vs. compute-matched CL-CVCL: 44.46 − 35.32 = **9.14 points higher**, which the authors attribute to BabyCL's continual-learning structure (event segmentation + combined visual/cross-modal objectives) rather than extra gradient updates, since the two are optimization-matched [BabyCL, p.6-7].
-- BabyCL vs. naive one-pass streaming: 44.46 − 25.68 = **18.78 points higher**.
-
-**As shown in Table 1 (passage [1], partially visible):**
-- Offline CVCL row: truncated, visible only as "**31 ± 1.13**" (the leading digits appear cut off in this excerpt, so the full value cannot be confirmed from the evidence given).
-- One-pass CVCL (streaming): **27.52 ± 3.12**
-- CL-CVCL (compute-matched): **36.41 ± 2.31**
-- BabyCL (k=4): **41.08 ± 1.79**
-- BabyCL (k=8): **43.38 ± 1.47**
-
-## Do the text numbers match Table 1?
-
-Not exactly — there are small but consistent discrepancies between the single-point values quoted in the running text and the "Final mean ± CI" values in Table 1:
-
-| Model | Text value | Table 1 value | Difference |
-|---|---|---|---|
-| One-pass CVCL | 25.68% | 27.52 ± 3.12% | 1.84 pts |
-| CL-CVCL | 35.32% | 36.41 ± 2.31% | 1.09 pts |
-| BabyCL (k=8) | 44.46% | 43.38 ± 1.47% | 1.08 pts |
-| Offline CVCL | 57.45% | "31 ± 1.13" (truncated) | cannot be verified from this excerpt |
-
-Notably, the Table 1 value for BabyCL (k=8), **43.38 ± 1.47%**, is identical to the "Final mean ± CI" reported for BabyCL's default 25% multimodal-fraction setting in Table 2 [BabyCL, p.5-6]. This suggests Table 1 reports the mean ± 95% CI across the three seeds, whereas the text's narrative figures (e.g., 44.46% for BabyCL) appear to come from a different statistic (possibly a single representative run or a "best" value), since they don't align numerically with the Table 1 means.
-
-**Caveat:** The evidence for the Offline CVCL row in Table 1 is incomplete (only "31 ± 1.13" is visible, likely due to truncation in the passage), so I cannot confirm whether the table's offline value does or does not match the text's 57.45% figure. Based on the available text, the exact numeric match between Table 1 and the narrative claims cannot be fully verified, and the three baselines/BabyCL values I can compare each differ from the Table 1 means by roughly 1–2 percentage points.
-
-**Retrieved:** BabyCL p.5-6 (0.83); BabyCL p.6-7 (0.81); BabyCL p.7-8 (0.78); BabyCL p.14-15 (0.77); BabyCL p.10-12 (0.77) | gold page hit: 1.00
-*34.4 s*
 
 ## Q03 (text-only, factual, medium, answerable: yes)
 
@@ -253,43 +209,6 @@ The passages provided do not show the paper directly quantifying or isolating "i
 **Retrieved:** BatchNorm p.1 (0.86); BatchNorm p.8 (0.85); BatchNorm p.2 (0.84); BatchNorm p.5-6 (0.84); BatchNorm p.6 (0.82) | gold page hit: 0.75
 *15.6 s*
 
-## Q09 (text-only, conceptual, hard, answerable: yes)
-
-**Question.** According to the Temporal Straightening paper, why should reducing the curvature of latent trajectories make gradient-based planning easier, and how well do the paper's experiments support that claim?
-
-**Reference answer.** A curvature regulariser penalises the angle between consecutive latent velocity vectors (maximising their cosine similarity) while a JEPA-style predictor is trained with stop-gradient on the target. The authors argue this makes Euclidean latent distance a better proxy for geodesic distance and improves conditioning of the planning objective. Theory: under linear latent dynamics, epsilon-straight transitions bound the condition number of the planning Hessian, so gradient descent converges faster; guarantees for nonlinear predictors are left to future work. Empirically, the loss landscape looks closer to convex after straightening (Figure 4) and the paper reports open-loop planning success improving by 20-60% and MPC by 20-30% (without saying here whether these are absolute points or relative changes). However, Table 1 is not uniformly positive: e.g., for a from-scratch ResNet encoder (1x384) on PointMaze-UMaze, open-loop success falls from 82.00 to 52.00 when the curvature loss is added, so the improvement claim holds for the headline configurations rather than every row.
-
-**System answer.** ## Why reducing curvature should help gradient-based planning
-
-The paper's core argument rests on two linked claims:
-
-1. **Euclidean distance as a proxy for geodesic distance.** Planning objectives typically minimize a Euclidean goal cost between predicted latent states and a target in latent space. If latent trajectories are highly curved, "straight-line distances in embedding space misrepresent the geodesic distance along feasible transitions" [TemporalStraightening, p.1-2]. By encouraging locally straightened latent trajectories via a curvature regularizer, the paper aims to make "the Euclidean distance in latent space a better proxy for the geodesic distance" [TemporalStraightening, p.1], so that minimizing Euclidean distance in the cost function actually corresponds to minimizing the true (feasible-path) distance to the goal.
-
-2. **Conditioning of the optimization landscape.** The paper states that "reducing curvature this way... improves the conditioning of the planning objective" [TemporalStraightening, p.1] and explicitly claims to "prove that reducing curvature improves convergence of gradient-based planners" [TemporalStraightening, p.2]. The intuition is that a highly non-convex, curved latent landscape causes gradient-based optimizers to struggle [TemporalStraightening, p.1-2], whereas straighter trajectories (as visualized in Figure 2, where PCA plots show smoother curves and MSE-to-target decreasing more monotonically with time after straightening) yield a better-conditioned, more gradient-friendly objective [TemporalStraightening, p.1-2].
-
-## How well do the experiments support this claim?
-
-**Supporting evidence:**
-
-- **Qualitative visualization**: Figure 2 shows latent trajectories (PushT rotation example, UMaze navigation example) before and after straightening — PCA projections show visibly less curved paths, and the MSE-to-target curves become smoother/more monotonic after straightening, consistent with Euclidean distance better tracking geodesic progress [TemporalStraightening, p.1-2].
-
-- **Quantitative planning results**: The paper reports that with the curvature regularizer, "open-loop planning success improves by 20–60% and MPC by 20–30% with a simple gradient-based planner" [TemporalStraightening, p.2]. The results table shows large gains from adding straightening — e.g., for a ResNet-based model without regularization, success rates across four conditions were 13.33±3.77, 29.33±9.43, 14.67±6.80, 48.00±9.80, whereas with the curvature regularizer (✓) the same ResNet model achieved 10.67±4.99, 33.33±4.99, 76.00±6.53, 98.67±1.89 [TemporalStraightening, p.9-10]. The large jumps in the third and fourth conditions (14.67→76.00 and 48.00→98.67) are consistent with improved planning when curvature is reduced.
-
-- **Distance-heatmap evidence**: The appendix states that "With straightening, the latent distance accurately reflects the minimum number of steps required to reach the target," compared against ground-truth A-star distance heatmaps [TemporalStraightening, p.19-20], directly supporting the claim that straightening improves the Euclidean-to-geodesic correspondence.
-
-- **Formal convergence claim**: The paper asserts a proof that curvature reduction improves gradient-based planner convergence [TemporalStraightening, p.2], though the passages provided do not include the proof itself, so the mathematical substantiation cannot be verified from the given evidence.
-
-**Caveats/limitations evident in the passages:**
-
-- The ablation table [TemporalStraightening, p.9-10] shows the benefit is not uniform: in the first condition, the non-regularized ResNet (13.33±3.77) slightly outperforms the regularized one (10.67±4.99), and the "+Proj" variant (20.00±0.00) also beats the plain regularized ResNet (13.33±4.62) in that same condition. This indicates the improvement from curvature regularization is not consistent across all tested settings/conditions.
-
-- The authors themselves note a limitation: the goal cost is symmetric Euclidean, "which may be sub-optimal under asymmetric or irreversible dynamics," and that regularization and planning may not operate in the same space, since "the gains from using an aggregation head for long-horizon planning suggest that regularization and planning objectives do not necessarily operate in the prediction latent space" [TemporalStraightening, p.9-10]. This suggests the straightening-improves-planning mechanism is more nuanced than a single global effect, and some gains come from combining straightening with a separate aggregation/projection head rather than curvature reduction alone.
-
-**Summary**: The paper supports its claim with a mix of qualitative visualization (straighter PCA trajectories, better-aligned MSE-to-target curves), a stated (but not shown in these passages) theoretical convergence result, and quantitative gains in goal-reaching success rates (e.g., 14.67→76.00 and 48.00→98.67 in one ResNet setting) [TemporalStraightening, p.9-10]. However, the evidence given does not include the proof itself, and the ablation results show at least one condition where the non-regularized model outperforms the regularized one, so the empirical support, while generally strong in aggregate, is not uniformly consistent across all tested conditions based on the passages provided.
-
-**Retrieved:** TemporalStraightening p.1 (0.86); TemporalStraightening p.9-10 (0.82); TemporalStraightening p.1-2 (0.79); TemporalStraightening p.2 (0.78); TemporalStraightening p.19-20 (0.78) | gold page hit: 0.29
-*21.2 s*
-
 ## Q11 (text-only, cross-paper, medium, answerable: yes)
 
 **Question.** ViT says it follows the original Transformer 'as closely as possible'. Which parts of the Transformer encoder does ViT keep, and how does its encoder differ from the one in 'Attention Is All You Need' (input handling, position information, normalisation placement, feed-forward activation)?
@@ -319,7 +238,7 @@ The provided passages do not contain any statement about normalization placement
 
 **Question.** MAE and I-JEPA both mask parts of an image and use a ViT encoder on the visible part. What does each method predict and with what loss, and what evidence does the I-JEPA paper give that predicting in representation space matters?
 
-**Reference answer.** MAE reconstructs the pixel values of the masked patches with a lightweight decoder (mean squared error computed only on masked patches); the encoder sees only visible patches and normalised pixels work slightly better. I-JEPA is non-generative: a predictor (narrow ViT) predicts the representations of target blocks from a context block, the targets come from a target encoder that is an exponential moving average of the context encoder, and the loss is average L2 distance in representation space. In I-JEPA's own ablation (Table 7, ViT-L/16, linear probe on 1% of ImageNet labels), using target-encoder outputs gave 66.9 top-1 versus 40.7 when the loss was in pixel space, and the authors say they 'conjecture' representation-space loss is a crucial component. I-JEPA also reports about 7% slower iterations than MAE but roughly 5x fewer iterations to converge. Caveat: the pixel-space variant is I-JEPA's own ablation (different epochs: 500 vs 800), not the MAE paper's setup, and MAE does not test representation-space targets.
+**Reference answer.** MAE reconstructs the pixel values of the masked patches with a lightweight decoder (mean squared error computed only on masked patches); the encoder sees only visible patches and normalised pixels work slightly better (Table 1d, ViT-L/16: 85.4 vs 84.9 fine-tuning, 73.9 vs 73.5 linear probing). I-JEPA is non-generative: a predictor (narrow ViT) predicts the representations of target blocks from a context block, the targets come from a target encoder that is an exponential moving average of the context encoder, and the loss is average L2 distance in representation space. In I-JEPA's own ablation (Table 7, ViT-L/16, linear probe on 1% of ImageNet labels), using target-encoder outputs gave 66.9 top-1 versus 40.7 when the loss was in pixel space, and the authors say they 'conjecture' representation-space loss is a crucial component. I-JEPA also reports about 7% slower iterations than MAE but roughly 5x fewer iterations to converge. Caveat: the pixel-space variant is I-JEPA's own ablation (different epochs: 500 vs 800), not the MAE paper's setup, and MAE does not test representation-space targets.
 
 **System answer.** Based on the passages provided, here is what can be established:
 
@@ -336,7 +255,7 @@ The paper directly tests this via an ablation: "Table 7 compares low-shot perfor
 - ✅ Shown: I-JEPA predicts target-block *representations* (not pixels), conditioned via a predictor network on positional embeddings, with loss in representation space; an ablation confirms pixel-space loss degrades linear-probe performance on 1% ImageNet.
 - ❌ Not shown: The exact loss formula/type used by MAE, or the numerical Table 7 results quantifying the representation-vs-pixel-space gap.
 
-**Retrieved:** I-JEPA p.6 (0.79); I-JEPA p.15-16 (0.78); I-JEPA p.5 (0.77); I-JEPA p.7-8 (0.76); I-JEPA p.13-14 (0.76) | gold page hit: 0.43
+**Retrieved:** I-JEPA p.6 (0.79); I-JEPA p.15-16 (0.78); I-JEPA p.5 (0.77); I-JEPA p.7-8 (0.76); I-JEPA p.13-14 (0.76) | gold page hit: 0.33
 *20.8 s*
 
 ## Q13 (text-only, cross-paper, hard, answerable: yes)
@@ -634,53 +553,6 @@ So there is a clear trend of increasing top-1 accuracy with larger parameter bud
 **SQL:** `SELECT   (SELECT MAX(top1_val) FROM model_results WHERE param_count_m < 10) AS best_under_10m,   (SELECT MAX(top1_val) FROM model_results WHERE param_count_m <= 25) AS best_under_25m,   (SELECT MAX(top1_val) FROM model_results) AS best_overall;` | overlap with reference result: 0.20
 *12.0 s*
 
-## Q30 (table-only, tabular, hard, answerable: yes)
-
-**Question.** At 224 px, which models are on the accuracy-throughput Pareto frontier (no other 224-px model has both higher-or-equal top-1 and higher-or-equal throughput, with at least one strictly higher), how many are there, and how many of them have top-1 of at least 85%?
-
-**Reference answer.** There are 26 frontier rows out of 783 result rows at 224 px, running from eva_giant_patch14_224.clip_ft_in1k (88.896 top-1, 240.83 samples/s) to efficientvit_m0.r224_in1k (63.304, 77,772.14 samples/s). Eleven have top-1 of at least 85%: eva_giant_patch14_224.clip_ft_in1k, beitv2_large_patch16_224.in1k_ft_in22k_in1k, beit_large_patch16_224.in22k_ft_in22k_in1k, deit3_large_patch16_224.fb_in22k_ft_in1k, convnextv2_base.fcmae_ft_in22k_in1k, mambaout_base_plus_rw.sw_e150_in12k_ft_in1k, convnext_large.fb_in22k_ft_in1k, coatnet_2_rw_224.sw_in12k_ft_in1k, beitv2_base_patch16_224.in1k_ft_in22k_in1k, vit_base_patch16_clip_224.laion2b_ft_in12k_in1k, tiny_vit_21m_224.dist_in22k_ft_in1k.
-
-**System answer.** Based on the SQL query results, there are **26 models** on the accuracy-throughput Pareto frontier at 224 px (`total_frontier_count = 26`), and **11 of them** have top-1 ≥ 85% (`frontier_ge85_count = 11`).
-
-**The 26 frontier models, ordered by top-1 accuracy (descending):**
-
-| Model | top1_val | samples_per_sec |
-|---|---|---|
-| eva_giant_patch14_224.clip_ft_in1k | 88.896 | 240.83 |
-| beitv2_large_patch16_224.in1k_ft_in22k_in1k | 88.406 | 875.21 |
-| beit_large_patch16_224.in22k_ft_in22k_in1k | 87.486 | 877.09 |
-| deit3_large_patch16_224.fb_in22k_ft_in1k | 86.99 | 881.59 |
-| convnextv2_base.fcmae_ft_in22k_in1k | 86.752 | 961.39 |
-| mambaout_base_plus_rw.sw_e150_in12k_ft_in1k | 86.642 | 1186.01 |
-| convnext_large.fb_in22k_ft_in1k | 86.612 | 1214.27 |
-| coatnet_2_rw_224.sw_in12k_ft_in1k | 86.582 | 1307.99 |
-| beitv2_base_patch16_224.in1k_ft_in22k_in1k | 86.494 | 2714.29 |
-| vit_base_patch16_clip_224.laion2b_ft_in12k_in1k | 86.204 | 3355.89 |
-| tiny_vit_21m_224.dist_in22k_ft_in1k | 85.088 | 3790.67 |
-| deit3_medium_patch16_224.fb_in22k_ft_in1k | 84.55 | 4876.31 |
-| hgnetv2_b4.ssld_stage2_ft_in1k | 83.7 | 6126.27 |
-| vit_base_patch32_clip_224.laion2b_ft_in12k_in1k | 83.304 | 12150.93 |
-| levit_256.fb_dist_in1k | 81.506 | 13220.48 |
-| levit_conv_192.fb_dist_in1k | 79.86 | 18017.24 |
-| levit_conv_128.fb_dist_in1k | 78.488 | 20143.06 |
-| shvit_s3.in1k | 77.356 | 25254.66 |
-| levit_conv_128s.fb_dist_in1k | 76.534 | 30016.26 |
-| levit_128s.fb_dist_in1k | 76.52 | 30353.33 |
-| shvit_s2.in1k | 75.184 | 38960.54 |
-| efficientvit_m3.r224_in1k | 73.394 | 40863.87 |
-| shvit_s1.in1k | 72.78 | 48051.75 |
-| efficientvit_m1.r224_in1k | 68.34 | 49531.88 |
-| mobilenetv4_conv_small_050.e3000_r224_in1k | 64.778 | 57208.51 |
-| efficientvit_m0.r224_in1k | 63.304 | 77772.14 |
-
-**Models with top-1 ≥ 85% (11 total)** — counting from the top of the list down through `tiny_vit_21m_224.dist_in22k_ft_in1k` (85.088):
-eva_giant_patch14_224.clip_ft_in1k, beitv2_large_patch16_224.in1k_ft_in22k_in1k, beit_large_patch16_224.in22k_ft_in22k_in1k, deit3_large_patch16_224.fb_in22k_ft_in1k, convnextv2_base.fcmae_ft_in22k_in1k, mambaout_base_plus_rw.sw_e150_in12k_ft_in1k, convnext_large.fb_in22k_ft_in1k, coatnet_2_rw_224.sw_in12k_ft_in1k, beitv2_base_patch16_224.in1k_ft_in22k_in1k, vit_base_patch16_clip_224.laion2b_ft_in12k_in1k, tiny_vit_21m_224.dist_in22k_ft_in1k.
-
-(Note: this evidence comes directly from the database query result, not from a paper passage, so no citation tag applies.)
-
-**SQL:** `WITH points AS (   SELECT m.model, m.top1_val, b.samples_per_sec   FROM model_results m   JOIN benchmark_infer b     ON m.arch = b.arch AND m.img_size = b.img_size   WHERE m.img_size = 224     AND m.top1_val IS NOT NULL     AND b.samples_per_sec IS NOT NULL ), frontier AS (   SELECT p.*   FROM points p   WHERE NOT EXISTS (     SELECT 1 FROM points p2     WHERE p2.top1_val >= p.top1_val       AND p2.samples_per_sec >= p.samples_per_sec       AND (p2.top1_val > p.top1_val OR p2.samples_per_sec > p.samples_per_sec)   ) ) SELECT   model,   top1_val,   samples_per_sec,   (SELECT COUNT(*) FROM frontier) AS total_frontier_count,   (SELECT COUNT(*) FROM frontier WHERE top1_val >= 85) AS frontier_ge85_count FROM frontier ORDER BY top1_val DESC;` | overlap with reference result: 0.74
-*32.0 s*
-
 ## Q31 (text+table, cross-source, medium, answerable: yes)
 
 **Question.** The ViT paper says smaller patches make a Transformer more expensive. Using the sequence length it implies for 224-px inputs, how do the GMACs and measured throughput of ViT-Base with 32, 16 and 8 pixel patches compare with that expectation?
@@ -766,167 +638,6 @@ For context, the paper notes that ResNet-50/101/152 all use the bottleneck block
 **Retrieved:** ResNet p.5-6 (0.76); ResNet p.5 (0.74); ResNet p.8 (0.73); ResNet p.6-7 (0.73); ResNet p.6 (0.73) | gold page hit: 0.67
 **SQL:** `SELECT arch, img_size, gmacs FROM benchmark_infer WHERE img_size = 224   AND arch IN ('resnet18', 'resnet34', 'resnet50', 'resnet101', 'resnet152') ORDER BY arch;` | overlap with reference result: 0.69
 *18.9 s*
-
-## Q34 (text+table, cross-source, hard, answerable: yes)
-
-**Question.** Among timm rows whose weights tag starts with 'mae', which has the highest ImageNet-R and ImageNet-A top-1, how does robustness change with model size, and what pre-training task does the MAE paper describe?
-
-**Reference answer.** Six hiera_*_224.mae_in1k_ft_in1k rows are tagged mae. hiera_huge_224 is highest on ImageNet-R (64.967; change vs 200-class clean -32.243), ImageNet-A (66.253) and Sketch (50.078), with 672.78M parameters. Robustness decreases steadily with size: R top-1 is 64.967 (huge), 60.29 (large), 55.57 (base_plus), 53.14 (base), 49.373 (small), 45.78 (tiny). The MAE paper describes pre-training that masks random patches (75% in its default) and reconstructs the missing pixels with an encoder that processes only the visible patches. Caveat: the MAE paper's own encoder is a plain ViT; Hiera is not in the corpus, and what the timm tag implies about Hiera's recipe is not stated in the PDFs.
-
-**System answer.** ## Highest ImageNet-R and ImageNet-A among `mae*` tagged timm models
-
-From the SQL query results (ordered by top1_r then top1_a descending), the top row is:
-
-**hiera_huge_224.mae_in1k_ft_in1k** — ImageNet-R (top1_r) = 64.967, ImageNet-A (top1_a) = 66.253, with 672.78M parameters at 224px.
-
-This is the single highest-scoring model on both robustness benchmarks among the `mae*`-tagged rows.
-
-## How robustness scales with model size
-
-Sorting the 6 returned rows by parameter count (tiny → huge), both robustness metrics increase monotonically with model size:
-
-| model | params (M) | top1_r | top1_a |
-|---|---|---|---|
-| hiera_tiny_224 | 27.91 | 45.78 | 30.56 |
-| hiera_small_224 | 35.01 | 49.373 | 36.453 |
-| hiera_base_224 | 51.52 | 53.14 | 43.4 |
-| hiera_base_plus_224 | 69.9 | 55.57 | 49.24 |
-| hiera_large_224 | 213.74 | 60.29 | 58.013 |
-| hiera_huge_224 | 672.78 | 64.967 | 66.253 |
-
-Calculation check (tiny → huge gain): top1_r increases by 64.967 − 45.78 = 19.187 points; top1_a increases by 66.253 − 30.56 = 35.693 points as parameters grow from 27.91M to 672.78M.
-
-This monotonic increase matches the MAE paper's own finding: "our method has strong scaling behavior: increasing the model sizes has significant gains" on robustness evaluation (ImageNet-A, -R, -C, etc.), and the paper explicitly contrasts this with supervised training, e.g. "with ViT-H, our MAE pre-training is 35% better on IN-A (68.2% vs 33.1%) than the supervised counterpart" [MAE, p.12].
-
-## Pre-training task described by the MAE paper
-
-The provided MAE passages don't include a full methods-section description of the pretraining objective, but the figure captions give a direct characterization: the model is shown "masked image (left), our MAE reconstruction (middle), and the ground-truth (right)," with "masking ratio is 75%" on both ImageNet and COCO validation images [MAE, p.13-14]. This indicates the pre-training task is a masked-image reconstruction task — masking a large portion (75%) of image patches and training the model to reconstruct the original (ground-truth) image content from the visible patches.
-
-**Caveat:** This description comes only from figure captions in the supplied passages, not from an explicit "Approach/Method" section, so the full architectural details (e.g., encoder-decoder design, loss function) of the MAE pretraining task are not established by the evidence given here.
-
-**Retrieved:** MAE p.12-14 (0.79); ViT p.13-14 (0.74); ResNet p.5-6 (0.73); I-JEPA p.12-13 (0.73); MAE p.7-8 (0.73) | gold page hit: 0.00
-**SQL:** `SELECT model, arch, img_size, param_count_m, top1_r, top1_a FROM model_results WHERE weights_tag LIKE 'mae%' ORDER BY top1_r DESC, top1_a DESC;` | overlap with reference result: 0.51
-*23.1 s*
-
-## Q35 (text+table, cross-source, hard, answerable: yes)
-
-**Question.** For ViT models released with the same augreg recipe tag, how much higher is ImageNet top-1 when the weights come from ImageNet-21k pre-training plus ImageNet-1k fine-tuning than when trained on ImageNet-1k only, does the gain depend on model size, and how does this relate to what the ViT paper says about pre-training data?
-
-**Reference answer.** In all six matched pairs the in21k-then-in1k weights are better: vit_base_patch16_224 +5.38 (84.534 vs 79.154), vit_base_patch16_384 +4.908, vit_base_patch32_224 +5.824, vit_base_patch32_384 +4.608, vit_small_patch16_224 +2.56, vit_small_patch16_384 +2.684. Base-size models gain about 5.2 points on average and Small about 2.6, so the gain is larger for the larger model. This is directionally consistent with the ViT paper, which says larger pre-training data helps ('large scale training trumps inductive bias') and that larger models only show their benefit with more data, but the paper's evidence is at different scales (ImageNet, ImageNet-21k, JFT-300M) and includes ViT-Large, which has no pair here.
-
-**System answer.** ## ImageNet top‑1 gain: IN‑21k pre‑train + IN‑1k fine‑tune vs. IN‑1k‑only
-
-From the database query (weights pairs matched by architecture, `augreg_in21k_ft_in1k` vs. `augreg_in1k`):
-
-| arch | img_size | IN‑21k‑ft‑IN‑1k top‑1 | IN‑1k‑only top‑1 | Gain (pp) |
-|---|---|---|---|---|
-| vit_small_patch16 | 224 | 81.402 | 78.842 | **2.56** |
-| vit_small_patch16 | 384 | 83.814 | 81.130 | **2.68** |
-| vit_base_patch16 | 224 | 84.534 | 79.154 | **5.38** |
-| vit_base_patch16 | 384 | 86.010 | 81.102 | **4.91** |
-| vit_base_patch32 | 224 | 80.732 | 74.908 | **5.82** |
-| vit_base_patch32 | 384 | 83.358 | 78.750 | **4.61** |
-
-Calculations (gain = IN21k‑ft‑IN1k − IN1k‑only):
-- small/16@224: 81.402 − 78.842 = 2.560
-- small/16@384: 83.814 − 81.130 = 2.684
-- base/16@224: 84.534 − 79.154 = 5.380
-- base/16@384: 86.010 − 81.102 = 4.908
-- base/32@224: 80.732 − 74.908 = 5.824
-- base/32@384: 83.358 − 78.750 = 4.608
-
-Mean gain across the six entries ≈ (2.560+2.684+5.380+4.908+5.824+4.608)/6 = 25.964/6 ≈ **4.33 pp**, with a range of roughly **2.56 to 5.82 pp**.
-
-## Does the gain depend on model size?
-
-Yes, based on this data: the **"small" variant gains only ~2.6 pp**, while the **"base" variants gain ~4.6–5.8 pp** — noticeably more. So the benefit of ImageNet‑21k pre‑training (before IN‑1k fine‑tuning) is larger for the bigger ("base") models than for the smaller ("small") models in this table. (Note: image resolution does not show a consistent one‑directional effect within a given architecture — e.g., base/16 gains slightly more at 224 than 384, while base/32 behaves similarly — so size of the backbone, not resolution, is the clearer driver here.)
-
-## Relation to the ViT paper's claims on pre‑training data
-
-This pattern is consistent with what the original ViT paper reports about pre-training data requirements:
-
-- "When pre-trained on the smallest dataset, ImageNet, ViT-Large models underperform compared to ViT-Base models, despite (moderate) regularization. With ImageNet-21k pre-training, their performances are similar. Only with JFT-300M, do we see the full benefit of larger models." [ViT, p.6, section 4.3]
-- "ResNets perform better with smaller pre-training datasets but plateau sooner than ViT, which performs better with larger pre-training." [ViT, p.6-7, Figure 4 caption]
-- "Vision Transformers overfit more than ResNets with comparable computational cost on smaller datasets... This result reinforces the intuition that the convolutional inductive bias is useful for smaller datasets, but for larger ones, learning the relevant patterns directly from data is sufficient, even beneficial." [ViT, p.6-7]
-
-The paper's core claim is that **larger ViT models need/benefit more from larger pre-training data** than smaller ViT models do. The timm/augreg numbers from the query support this directionally: moving from IN‑1k‑only training to IN‑21k pre‑training (a strictly larger pre-training corpus) followed by IN‑1k fine‑tuning yields a **larger absolute accuracy gain for the base-sized models than for the small-sized model**, mirroring the paper's observation that bigger models reap more benefit from bigger pre-training datasets.
-
-**Caveat:** The evidence provided does not include a direct statement from the ViT paper quantifying pp gains for IN‑21k‑ft‑IN‑1k vs. IN‑1k‑only training specifically (the paper's own Figure 3/4 comparisons use ImageNet, ImageNet‑21k, and JFT‑300M as pre‑training-only settings, not this augreg fine‑tuning protocol), so the numeric match above is a pattern‑level comparison, not a value directly stated in the ViT paper passages given.
-
-**Retrieved:** ViT p.6-7 (0.84); MAE p.7 (0.80); ViT p.5 (0.79); ViT p.5-6 (0.78); ViT p.6-7 (0.78) | gold page hit: 0.67
-**SQL:** `SELECT   m21.arch,   m21.img_size,   m21.top1_val AS top1_val_in21k_ft_in1k,   m1.top1_val AS top1_val_in1k_only,   m21.top1_val - m1.top1_val AS gain FROM model_results m21 JOIN model_results m1   ON m1.arch = REPLACE(m21.arch, '-', '')   AND m1.arch || '.augreg_in1k' = SUBSTR(m21.arch,1,0) || m1.arch || '.augreg_in1k' WHERE m21.weights_tag = 'augreg_in21k_ft_in1k'   AND m1.weights_tag = 'augreg_in1k'   AND m21.arch = m1.arch ORDER BY m21.param_count_m;` | overlap with reference result: 1.00
-*32.0 s*
-
-## Q37 (text+table, cross-source, hard, answerable: yes)
-
-**Question.** The ViT paper reports that ViT needs roughly 2-4x less compute than ResNets for the same transfer performance. In timm at 224 px, how do ViT-B/16 and ResNet-50/101/152 compare on top-1 and measured throughput, and does that data confirm the paper's claim?
-
-**Reference answer.** The paper's claim is about pre-training compute (Figure 5 is accuracy vs pre-training exaFLOPs, JFT-300M, controlled study), with the caveat that efficiency can depend on schedule, optimiser and weight decay. timm measures inference throughput and has no pre-training compute. At 224 px, vit_base_patch16_224.augreg2_in21k_ft_in1k has 85.108 top-1 at 2,992.79 samples/s (17.58 GMACs), versus resnet152.a1h_in1k 82.818 at 1,976.86 (11.56 GMACs), resnet101.a1h_in1k 81.95 at 2,781.19 (7.83 GMACs) and resnet50.a1h_in1k 80.654 at 4,302.84 (4.11 GMACs). So ViT-B/16 is more accurate than all three and faster than resnet152 (1.51x) and resnet101 (1.08x) despite more GMACs, but slower than resnet50. These numbers neither confirm nor refute the 2-4x pre-training-compute claim.
-
-**System answer.** ## Data from the timm query (img_size=224, best checkpoint per architecture)
-
-| Architecture | Best checkpoint | Top‑1 | Throughput (img/s) | GMACs | Params (M) |
-|---|---|---|---|---|---|
-| ViT‑B/16 | augreg2_in21k_ft_in1k | **85.108** | 2992.79 | 17.58 | 86.57 |
-| ResNet‑50 | fb_swsl_ig1b_ft_in1k | 81.146 | **4302.84** | 4.11 | 25.56 |
-| ResNet‑101 | a1h_in1k | 81.950 | 2781.19 | 7.83 | 44.55 |
-| ResNet‑152 | a1h_in1k | 82.818 | 1976.86 | 11.56 | 60.19 |
-
-**Accuracy:** ViT‑B/16's best checkpoint beats every ResNet's best checkpoint: +3.96 pp over ResNet‑50 (85.108 − 81.146), +3.16 pp over ResNet‑101, +2.29 pp over ResNet‑152.
-
-**Throughput (images/sec):**
-- ResNet‑50 is faster than ViT‑B/16: 4302.84 / 2992.79 = 1.44×
-- ViT‑B/16 is faster than ResNet‑101: 2992.79 / 2781.19 = 1.08×
-- ViT‑B/16 is faster than ResNet‑152: 2992.79 / 1976.86 = 1.51×
-
-**Raw per‑image compute (GMACs):** ViT‑B/16 (17.58) is actually *larger* than every ResNet's GMACs — 4.3× ResNet‑50's 4.11, 2.2× ResNet‑101's 7.83, 1.5× ResNet‑152's 11.56.
-
-## Does this confirm the paper's "2–4× less compute" claim?
-
-**Not directly, and the GMAC comparison points the opposite way.** The paper's statement — "Vision Transformers dominate ResNets on the performance/compute trade-off. ViT uses approximately 2−4× less compute to attain the same performance (average over 5 datasets)" [ViT, p.7] — comes from a specific controlled scaling study: transfer performance vs. total **pre-training compute in exaFLOPs**, using models pre-trained on JFT-300M for 7–14 epochs (ResNets R50x1…R200x3, ViT-B/32…H/14, and hybrids), as reported in Figure 5 and Table 6 [ViT, p.7-8; p.15-16]. That metric is cumulative pre-training FLOPs, not single-forward-pass GMACs or inference throughput on already-trained checkpoints.
-
-The timm query instead compares **inference-time GMACs/throughput** for checkpoints trained with heterogeneous recipes on ImageNet-1k/21k (e.g., `augreg2_in21k_ft_in1k`, `fb_swsl_ig1b_ft_in1k`), not the JFT-300M pre-training scaling experiment the paper's claim is based on. These are different measurements on different training setups, so this query cannot confirm or refute the pre-training-compute claim as stated in the paper.
-
-What the data **does** show:
-- ViT-B/16 reaches higher top-1 accuracy than any ResNet-50/101/152 variant listed.
-- But its single-pass compute (17.58 GMACs) is higher, not lower, than all three ResNets' GMACs — the opposite direction of "needs less compute."
-- Its measured throughput is faster than ResNet-101/152 but slower than ResNet-50.
-
-So the evidence here does not establish that ViT-B/16 needs 2–4× less compute than ResNets for equal performance; if anything, on a per-image GMACs basis in this table, ViT-B/16 costs *more* compute than the ResNets it outperforms. The paper's actual 2–4× efficiency claim rests on the separate JFT-300M total-pre-training-compute scaling study [ViT, p.7, Figure 5; p.15-16, Table 6], which this timm/ImageNet inference-cost query does not reproduce.
-
-**Retrieved:** ViT p.7-8 (0.80); ViT p.15-16 (0.79); ViT p.6-7 (0.77); ViT p.5 (0.76); ViT p.5-6 (0.75) | gold page hit: 1.00
-**SQL:** `SELECT   mr.model,   mr.arch,   mr.img_size,   mr.top1_val,   bi.samples_per_sec,   bi.batch_size,   bi.gmacs,   bi.param_count_m FROM model_results mr JOIN benchmark_infer bi   ON mr.arch = bi.arch AND mr.img_size = bi.img_size WHERE mr.img_size = 224   AND (     mr.arch = 'vit_base_patch16_224'     OR mr.arch IN ('resnet50', 'resnet101', 'resnet152')   ) ORDER BY mr.arch, mr.top1_val DESC;` | overlap with reference result: 1.00
-*51.8 s*
-
-## Q39 (text+table, cross-source, medium, answerable: yes)
-
-**Question.** The BYOL paper reports 74.3% for a linear classifier on frozen ResNet-50 features and cites supervised ResNet-50 baselines of 76.5% and 78.9%. How many timm ResNet-50 weights at 224 px exceed each of these three numbers, and what must be kept in mind when reading that comparison?
-
-**Reference answer.** The paper's numbers are 74.3% (BYOL, linear evaluation on frozen features), 76.5% and 78.9% (supervised baselines). Among timm's 18 resnet50 rows at 224 px, all 18 are above 74.3%, 17 are at or above 76.5% (the exception is resnet50.tv_in1k at 76.156), and 13 are at or above 78.9% (the five below are ra_in1k 78.82, bt_in1k 78.444, a3_in1k 78.052, gluon_in1k 77.58 and tv_in1k 76.156). These are not like-for-like: BYOL's 74.3% is a linear probe on self-supervised features, whereas timm's are fully supervised weights with different recipes, some using extra data (e.g. ig1b, yfcc100m), so the comparison says nothing about whether self-supervised learning is better or worse.
-
-**System answer.** ## Numbers from the database query
-
-Out of 18 total ResNet-50 weights in timm trained/evaluated at 224 px:
-
-- **> 74.3%** (BYOL's self-supervised linear-eval number): **18 of 18** exceed it
-- **> 76.5%** (SimCLR paper's cited supervised baseline [8]): **17 of 18** exceed it
-- **> 78.9%** (MaxUp supervised baseline [75]): **13 of 18** exceed it
-
-## What must be kept in mind when reading this comparison
-
-1. **The BYOL numbers are not from timm.** BYOL's 74.3% top-1 is a *linear evaluation* result — a linear classifier trained on **frozen** self-supervised features — not an end-to-end fine-tuned supervised model [BYOL, p.6]. Comparing it directly to timm's fully-trained/fine-tuned ResNet-50 weights conflates two different training regimes (self-supervised pretraining + frozen-linear-probe vs. standard supervised training).
-
-2. **The 76.5% and 78.9% baselines are specific supervised training recipes, not a ceiling.** They come from particular papers: 76.5% is the vanilla supervised baseline reported in [8] (SimCLR paper), and 78.9% is from MaxUp [75], described in BYOL's own Appendix C as "the stronger supervised baseline... which uses advanced supervised learning techniques" [BYOL, p.19-20]. BYOL explicitly notes these are just two reference points among many possible supervised results, not an upper bound — consistent with 13/18 timm models already exceeding even the stronger 78.9% baseline.
-
-3. **timm's higher numbers likely reflect training-recipe improvements, not an unfair comparison to BYOL per se.** Since the database only returns aggregate counts (no model names, training details, or augmentation/schedule info), the passages and query result do not establish *why* timm models exceed these baselines — e.g., whether via longer training, stronger augmentation (BYOL itself notes RandAugment improved its own reproduced supervised baseline to 76.4% vs. the original 76.5% cited [BYOL, p.19-20]), different learning-rate schedules, or test-time tricks. The evidence does not specify timm's exact training setups.
-
-4. **Image resolution and evaluation protocol matter.** The query filters to `img_size = 224`, matching BYOL's standard ResNet-50 (1×) evaluation [BYOL, p.6], but other factors (test-time augmentation, EMA weights, distillation, etc., common in some timm checkpoints) are not visible in the passages provided and could inflate timm accuracy relative to BYOL's and the original supervised baselines' simpler protocols.
-
-**In short:** the query result shows all 18 timm ResNet-50@224 weights beat BYOL's linear-eval number, nearly all beat the vanilla supervised baseline (76.5%), and the majority beat even the strong MaxUp baseline (78.9%) — but the evidence does not establish *why*, and the comparison mixes a frozen-feature linear-evaluation result (BYOL) against presumably fully fine-tuned supervised timm models, which is not an apples-to-apples comparison.
-
-**Retrieved:** BYOL p.20-22 (0.81); BYOL p.6 (0.81); BYOL p.19-20 (0.81); BYOL p.6-7 (0.80); BYOL p.18-19 (0.77) | gold page hit: 1.00
-**SQL:** `SELECT   SUM(CASE WHEN top1_val > 74.3 THEN 1 ELSE 0 END) AS gt_74_3,   SUM(CASE WHEN top1_val > 76.5 THEN 1 ELSE 0 END) AS gt_76_5,   SUM(CASE WHEN top1_val > 78.9 THEN 1 ELSE 0 END) AS gt_78_9,   COUNT(*) AS total_resnet50_224 FROM model_results WHERE arch = 'resnet50' AND img_size = 224;` | overlap with reference result: 1.00
-*20.1 s*
 
 ## Q40 (text+table, cross-source, medium, answerable: yes)
 
@@ -1017,3 +728,335 @@ No passages from an MMLU paper were included in the provided material. **The evi
 
 **Retrieved:** FIRE-Bench p.2 (0.75); FIRE-Bench p.9-10 (0.75); FIRE-Bench p.19-20 (0.75); SWE-bench p.11-12 (0.74); SWE-bench p.25-26 (0.73) | gold page hit: 0.17
 *14.7 s*
+
+## Q02 (text-only, factual, medium, answerable: yes)
+
+**Question.** In BabyCL's main results (Table 1), how do the Labeled-S 4AFC accuracies of BabyCL (k = 4 and k = 8) compare with the offline CVCL upper bound and with the one-pass and compute-matched streaming baselines, and what do the authors conclude from the compute-matched baseline?
+
+**Reference answer.** Table 1 (4AFC, Labeled-S, mean +/- CI): offline CVCL (i.i.d., 400 epochs, upper bound) 57.31 +/- 1.13; one-pass CVCL (naive streaming) 27.52 +/- 3.12; CL-CVCL (compute-matched) 36.41 +/- 2.31; BabyCL with k=4 41.08 +/- 1.79 and with k=8 43.38 +/- 1.47. Both BabyCL settings beat both streaming baselines (k=8 is 15.86 points above one-pass CVCL and 6.97 above CL-CVCL), k=8 is 2.30 above k=4, and both remain below the offline upper bound (k=8 by 13.93 points). The authors conclude that BabyCL substantially closes but does not match the gap to offline training, and because CL-CVCL is matched in optimization work to BabyCL's gradient budget (at k=8), BabyCL's advantage 'cannot be explained by gradient count alone'.
+
+**System answer.** **Table 1 results (Labeled‑S 4AFC accuracy):**
+
+| Model | Accuracy |
+|---|---|
+| Offline CVCL (upper bound) | 57.45% [BabyCL, p.6-7] |
+| One‑pass CVCL (streaming) | 27.52 ± 3.12% (final mean ± CI) [BabyCL, p.5-6]; text reports it "collapses to 25.68%" [BabyCL, p.6-7] |
+| CL‑CVCL (compute‑matched) | 36.41 ± 2.31% (final mean ± CI) [BabyCL, p.5-6]; text reports "reaches only 35.32%" [BabyCL, p.6-7] |
+| BabyCL (k=4) | 41.08 ± 1.79% [BabyCL, p.5-6] |
+| BabyCL (k=8) | 43.38 ± 1.47% (final mean ± CI); text states BabyCL reaches "44.46% (k=8)" [BabyCL, p.5-6; p.6-7] |
+
+(The passages give two overlapping sets of numbers — a "final mean ± CI" row in the table excerpt and single-point values cited in the discussion text — but both sources agree on the same ranking and story.)
+
+**Comparisons:**
+- **Vs. offline CVCL:** BabyCL (k=8) at ~43–44% "substantially closes the gap to offline CVCL (57.45%) but does not match it" [BabyCL, p.6-7]. The authors treat the offline result as an upper bound reflecting what the CVCL objective can achieve "when temporal structure is removed" via 400 epochs of i.i.d. training [BabyCL, p.5-6].
+- **Vs. one-pass CVCL:** BabyCL (k=8) greatly outperforms one-pass CVCL (~43–44% vs ~26–28%), and the authors say this "confirm[s] that a training recipe designed for i.i.d. data does not transfer to streaming" [BabyCL, p.6-7].
+- **Vs. compute-matched CL-CVCL:** BabyCL (k=8) also clearly exceeds CL-CVCL (~43–44% vs ~35–36%), even though CL-CVCL is given replay "to match BabyCL's gradient budget at k = 8 (approximately 6× revisitation per item)" [BabyCL, p.6-7].
+
+**Authors' conclusion from the compute-matched baseline:**
+Because CL-CVCL is matched to BabyCL in the amount of optimization/gradient work performed, the authors argue that "the gap cannot be explained by gradient count alone; it reflects the benefit of organizing the stream through event segmentation and of combining visual self-supervision with cross-modal grounding" [BabyCL, p.6-7]. They further note that increasing insertion-time resampling from k=4 to k=8 yields an additional ~2.6-point gain, which they interpret as evidence that "the continual-structure benefits compound with more thorough revisitation of newly inserted content" [BabyCL, p.6-7] — i.e., BabyCL's gains stem from its continual-learning design (event segmentation + replay structure + multimodal grounding), not merely from doing more gradient updates.
+
+**Retrieved:** BabyCL p.5-6 (0.82); BabyCL p.6-7 (0.81); BabyCL p.14-15 (0.76); BabyCL p.7-8 (0.76); BabyCL p.10-12 (0.76) | gold page hit: 1.00
+*27.5 s*
+
+## Q09 (text-only, conceptual, hard, answerable: yes)
+
+**Question.** According to the Temporal Straightening paper, why should reducing the curvature of latent trajectories make gradient-based planning easier, and do the paper's experiments generally show planning improving when the curvature regularizer is used?
+
+**Reference answer.** Explanation (the main part). Planning minimises a Euclidean goal cost in latent space, and when latent trajectories are highly curved, straight-line distance misrepresents the geodesic distance along feasible transitions. A curvature regulariser (it penalises the angle between consecutive latent velocity vectors, i.e. maximises their cosine similarity, while a JEPA-style predictor is trained with stop-gradient on the target) straightens trajectories, which makes Euclidean latent distance a better proxy for geodesic distance and improves the conditioning of the planning objective. The theory covers linear latent dynamics: epsilon-straight transitions control the condition number of the planning Hessian, so gradient descent converges linearly at a rate set by the condition number; guarantees for nonlinear predictors are left to future work. As an illustration, the loss landscape is closer to convex after straightening (Figure 4). Experiments (general trend only). Yes: the paper reports open-loop planning success improving by 20-60% and MPC by 20-30% with a simple gradient-based planner, and says it observes a significant improvement across all models and environments. The improvement is not uniform in Table 1 (for example a from-scratch ResNet 1x384 on PointMaze-UMaze falls from 82.00 to 52.00 open-loop), so 'generally' is the right strength, in simulated goal-reaching tasks.
+
+**System answer.** ## Why reducing curvature should help gradient-based planning
+
+The paper's core argument is that planning relies on using **Euclidean distance in latent space as a proxy for geodesic distance** along feasible trajectories, and this proxy is only reliable when latent trajectories are straight:
+
+- "In particular, when latent trajectories are highly curved, straight-line distances in embedding space misrepresent the geodesic distance along feasible transitions. These challenges call for better representations that facilitate latent planning." [TemporalStraightening, p.1-2]
+- The method is designed so that "reducing curvature this way makes the Euclidean distance in latent space a better proxy for the geodesic distance and improves the conditioning of the planning objective." [TemporalStraightening, p.1]
+- Theoretically, the authors state they "prove that reducing curvature improves convergence of gradient-based planners" [TemporalStraightening, p.2], i.e., straightening the trajectory manifold improves the conditioning of the non-convex planning objective that gradient-based optimizers must navigate: "The induced planning objective is typically highly non-convex, potentially causing gradient-based optimizers to struggle." [TemporalStraightening, p.1-2]
+
+Intuitively, in a straightened space, moving along the predicted trajectory manifold more closely resembles moving in a straight line, so a goal cost based on Euclidean distance has gradients that point more reliably toward the goal, making gradient descent-based action optimization more stable and effective — illustrated in Figure 2, where "Straightening yields less curved and smoother trajectories, and makes Euclidean distance a more faithful proxy for geodesic progress towards the goal." [TemporalStraightening, p.1-2]
+
+## Do the experiments generally confirm this?
+
+Yes, the reported results are consistently positive for the curvature regularizer:
+
+- Summary claim: "we observe superior empirical gains across a suite of goal-reaching tasks: open-loop planning success improves by 20–60% and MPC by 20–30% with a simple gradient-based planner." [TemporalStraightening, p.2]
+- Quantitative table (ResNet encoder, with vs. without curvature regularization, success rates %):
+  - Without curvature (✗): 13.33 ± 3.77, 29.33 ± 9.43, 14.67 ± 6.80, 48.00 ± 9.80
+  - With curvature (✓): 10.67 ± 4.99, 33.33 ± 4.99, 76.00 ± 6.53, 98.67 ± 1.89
+  [TemporalStraightening, p.9-10]
+
+  Comparing matched columns: three of four settings show large improvements (29.33→33.33, 14.67→76.00, 48.00→98.67), while the first setting shows a slight drop (13.33→10.67 ≈ a decrease of about 2.66 points, within overlapping error bars). So the gains are not uniformly positive in every single configuration, but the paper describes the overall pattern as a "significant and consistent" improvement: "Across a range of 2D goal-reaching tasks, this leads to significant and consistent gains over baselines." [TemporalStraightening, p.9-10]
+- The paper also reports that the curvature regularizer outperforms alternative temporal regularizers (smoothness, time-contrastive objectives), which "generally hurt performance" or fail to "match the gains from straightening" [TemporalStraightening, p.15-16], reinforcing that the specific curvature-based approach is what drives the improvement rather than temporal regularization in general.
+
+**Overall:** The evidence shows the authors' rationale is that curvature reduction tightens the correspondence between Euclidean and geodesic distance, improving the conditioning of the planning optimization; and experimentally, results are described as showing significant, mostly consistent gains (20–60% for open-loop, 20–30% for MPC), with one data point in the provided table showing a minor regression within error-bar range.
+
+**Retrieved:** TemporalStraightening p.1 (0.87); TemporalStraightening p.9-10 (0.84); TemporalStraightening p.15-16 (0.82); TemporalStraightening p.1-2 (0.82); TemporalStraightening p.2 (0.81) | gold page hit: 0.29
+*17.0 s*
+
+## Q30 (table-only, tabular, hard, answerable: yes)
+
+**Question.** At 224 px, using each model's listed ImageNet top-1 and its architecture's measured inference throughput (samples/s), which models are on the accuracy-throughput Pareto frontier (no other 224-px model has both higher-or-equal top-1 and higher-or-equal throughput, with at least one strictly higher), how many are there, and how many of them have top-1 of at least 85%?
+
+**Reference answer.** There are 26 frontier rows out of 783 result rows at 224 px, running from eva_giant_patch14_224.clip_ft_in1k (88.896 top-1, 240.83 samples/s) to efficientvit_m0.r224_in1k (63.304, 77,772.14 samples/s). Eleven have top-1 of at least 85%: eva_giant_patch14_224.clip_ft_in1k, beitv2_large_patch16_224.in1k_ft_in22k_in1k, beit_large_patch16_224.in22k_ft_in22k_in1k, deit3_large_patch16_224.fb_in22k_ft_in1k, convnextv2_base.fcmae_ft_in22k_in1k, mambaout_base_plus_rw.sw_e150_in12k_ft_in1k, convnext_large.fb_in22k_ft_in1k, coatnet_2_rw_224.sw_in12k_ft_in1k, beitv2_base_patch16_224.in1k_ft_in22k_in1k, vit_base_patch16_clip_224.laion2b_ft_in12k_in1k, tiny_vit_21m_224.dist_in22k_ft_in1k.
+
+**System answer.** Based on the SQL query result (timm database), there are **26 models** on the accuracy-throughput Pareto frontier at 224 px, and **11 of them** have top-1 ≥ 85%.
+
+**Full frontier list (sorted by top1_val descending):**
+
+| Model | top1_val | samples/sec |
+|---|---|---|
+| eva_giant_patch14_224.clip_ft_in1k | 88.896 | 240.83 |
+| beitv2_large_patch16_224.in1k_ft_in22k_in1k | 88.406 | 875.21 |
+| beit_large_patch16_224.in22k_ft_in22k_in1k | 87.486 | 877.09 |
+| deit3_large_patch16_224.fb_in22k_ft_in1k | 86.99 | 881.59 |
+| convnextv2_base.fcmae_ft_in22k_in1k | 86.752 | 961.39 |
+| mambaout_base_plus_rw.sw_e150_in12k_ft_in1k | 86.642 | 1186.01 |
+| convnext_large.fb_in22k_ft_in1k | 86.612 | 1214.27 |
+| coatnet_2_rw_224.sw_in12k_ft_in1k | 86.582 | 1307.99 |
+| beitv2_base_patch16_224.in1k_ft_in22k_in1k | 86.494 | 2714.29 |
+| vit_base_patch16_clip_224.laion2b_ft_in12k_in1k | 86.204 | 3355.89 |
+| tiny_vit_21m_224.dist_in22k_ft_in1k | 85.088 | 3790.67 |
+| deit3_medium_patch16_224.fb_in22k_ft_in1k | 84.55 | 4876.31 |
+| hgnetv2_b4.ssld_stage2_ft_in1k | 83.7 | 6126.27 |
+| vit_base_patch32_clip_224.laion2b_ft_in12k_in1k | 83.304 | 12150.93 |
+| levit_256.fb_dist_in1k | 81.506 | 13220.48 |
+| levit_conv_192.fb_dist_in1k | 79.86 | 18017.24 |
+| levit_conv_128.fb_dist_in1k | 78.488 | 20143.06 |
+| shvit_s3.in1k | 77.356 | 25254.66 |
+| levit_conv_128s.fb_dist_in1k | 76.534 | 30016.26 |
+| levit_128s.fb_dist_in1k | 76.52 | 30353.33 |
+| shvit_s2.in1k | 75.184 | 38960.54 |
+| efficientvit_m3.r224_in1k | 73.394 | 40863.87 |
+| shvit_s1.in1k | 72.78 | 48051.75 |
+| efficientvit_m1.r224_in1k | 68.34 | 49531.88 |
+| mobilenetv4_conv_small_050.e3000_r224_in1k | 64.778 | 57208.51 |
+| efficientvit_m0.r224_in1k | 63.304 | 77772.14 |
+
+**Count check:** 26 rows returned → `total_frontier_models = 26`.
+
+**≥85% top-1 check (manual recount of the 11 flagged rows, each ≥85):**
+88.896, 88.406, 87.486, 86.99, 86.752, 86.642, 86.612, 86.582, 86.494, 86.204, 85.088 → that's 11 models (all values ≥ 85), matching `frontier_models_top1_ge_85 = 11`.
+
+The next model, tiny_vit_21m at 85.088, is the lowest-accuracy model still ≥85%; deit3_medium at 84.55 is just below the threshold.
+
+This answer is based solely on the provided SQL query result from the timm database (no paper passages were supplied for this question).
+
+**SQL:** `WITH data AS (     SELECT         mr.model,         mr.top1_val,         bi.samples_per_sec     FROM model_results mr     JOIN benchmark_infer bi         ON mr.arch = bi.arch        AND mr.img_size = bi.img_size     WHERE mr.img_size = 224       AND mr.top1_val IS NOT NULL       AND bi.samples_per_sec IS NOT NULL ), frontier AS (     SELECT d1.model, d1.top1_val, d1.samples_per_sec     FROM data d1     WHERE NOT EXISTS (         SELECT 1         FROM data d2         WHERE d2.top1_val >= d1.top1_val           AND d2.samples_per_sec >= d1.samples_per_sec           AND (d2.top1_val > d1.top1_val OR d2.samples_per_sec > d1.samples_per_sec)     ) ) SELECT     model,     top1_val,     samples_per_sec,     COUNT(*) OVER () AS total_frontier_models,     SUM(CASE WHEN top1_val >= 85 THEN 1 ELSE 0 END) OVER () AS frontier_models_top1_ge_85 FROM frontier ORDER BY top1_val DESC;` | overlap with reference result: 0.74
+*33.0 s*
+
+## Q34 (text+table, cross-source, hard, answerable: yes)
+
+**Question.** Among timm rows whose weights tag starts with 'mae', which has the highest ImageNet-R and ImageNet-A top-1, how do ImageNet-R and ImageNet-A top-1 change with model size across these rows, and what pre-training task does the MAE paper describe?
+
+**Reference answer.** Six hiera_*_224.mae_in1k_ft_in1k rows are tagged mae. hiera_huge_224 is highest on ImageNet-R (64.967) and ImageNet-A (66.253) (and Sketch, 50.078), with 672.78M parameters. ImageNet-R and ImageNet-A top-1 both rise at every step with model size: R is 45.78 (tiny), 49.373 (small), 53.14 (base), 55.57 (base_plus), 60.29 (large), 64.967 (huge); A is 30.56, 36.453, 43.4, 49.24, 58.013, 66.253. The drop relative to clean top-1 on the same 200 classes also shrinks with size (R: -49.47 for tiny to -32.243 for huge; A: -65.04 to -31.717), so the larger models lose less under these shifts. The MAE paper describes pre-training that masks random patches (75% in its default) and reconstructs the missing pixels with an encoder that processes only the visible patches. Caveats: the six rows are one family (Hiera, all fine-tuned on ImageNet-1k at 224 px), so this is a trend across six rows, not a controlled test; the MAE paper's own encoder is a plain ViT, Hiera is not in the corpus, and what the timm tag implies about Hiera's recipe is not stated in the PDFs.
+
+**System answer.** ## Highest ImageNet‑R / ImageNet‑A among `mae*` timm rows
+
+The query (sorted `top1_r DESC, top1_a DESC`) returns `hiera_huge_224.mae_in1k_ft_in1k` as the top row, with:
+
+- **top1_r (ImageNet‑R) = 64.967**
+- **top1_a (ImageNet‑A) = 66.253**
+- param_count_m = 672.78, img_size = 224
+
+This is simultaneously the highest value for both metrics among the six rows returned.
+
+## How ImageNet‑R and ImageNet‑A top‑1 change with model size
+
+Ordering the six rows by `param_count_m` (ascending) and reading off `top1_r`/`top1_a`:
+
+| model | param_count_m | top1_r | top1_a |
+|---|---|---|---|
+| hiera_tiny_224 | 27.91 | 45.78 | 30.56 |
+| hiera_small_224 | 35.01 | 49.373 | 36.453 |
+| hiera_base_224 | 51.52 | 53.14 | 43.4 |
+| hiera_base_plus_224 | 69.9 | 55.57 | 49.24 |
+| hiera_large_224 | 213.74 | 60.29 | 58.013 |
+| hiera_huge_224 | 672.78 | 64.967 | 66.253 |
+
+Both metrics increase **monotonically** with parameter count:
+- top1_r: 45.78 → 49.373 → 53.14 → 55.57 → 60.29 → 64.967 (Δ ≈ +19.2 points from tiny to huge)
+- top1_a: 30.56 → 36.453 → 43.4 → 49.24 → 58.013 → 66.253 (Δ ≈ +35.7 points from tiny to huge)
+
+So larger MAE‑pretrained/fine‑tuned Hiera models consistently achieve higher robustness accuracy on both ImageNet‑R and ImageNet‑A, with ImageNet‑A improving by a larger absolute margin than ImageNet‑R as size grows. (This numeric trend comes solely from the SQL query result table; the paper passages do not provide a separate narrative size-scaling analysis for these specific Hiera checkpoints.)
+
+## Pre-training task described in the MAE paper
+
+From the MAE paper passage: it describes showing, "For each triplet, ... the masked image (left), our MAE reconstruction (middle), and the ground-truth (right). The masking ratio is 75%" [MAE, p.12-14]. This indicates the MAE pre-training task is a **masked image reconstruction (masked autoencoding) task**: a large portion of the input image (75% masking ratio) is removed/masked, and the model is trained to reconstruct the original image content from the remaining visible portion [MAE, p.12-14].
+
+**Caveat:** The provided MAE passage [4] does not give a fuller methodological description (e.g., encoder/decoder architecture details) of the pre-training task beyond this reconstruction-with-75%-masking description plus linear-probing/robustness evaluation discussion — so I cannot state more about the task mechanics than what appears above. (Note: the detailed "masked patch prediction" procedure with 80/10/10 corruption percentages described in passage [1] belongs to the ViT paper's self-supervision experiment, not the MAE paper, so it should not be attributed to MAE.)
+
+**Retrieved:** ViT p.13-14 (0.73); ResNet p.12 (0.73); ResNet p.5-6 (0.73); MAE p.12-14 (0.73); ViT p.6-7 (0.73) | gold page hit: 0.00
+**SQL:** `SELECT model, arch, weights_tag, param_count_m, img_size, top1_r, top1_a FROM model_results WHERE weights_tag LIKE 'mae%' ORDER BY top1_r DESC, top1_a DESC;` | overlap with reference result: 0.51
+*27.4 s*
+
+## Q35 (text+table, cross-source, hard, answerable: yes)
+
+**Question.** For ViT models released with the same augreg recipe tag, how much higher is ImageNet top-1 when the weights come from ImageNet-21k pre-training plus ImageNet-1k fine-tuning than when trained on ImageNet-1k only, is the gain similar for the Small and Base models, and is the pattern consistent in direction with what the ViT paper says about pre-training data?
+
+**Reference answer.** In all six matched pairs the ImageNet-21k-then-1k weights are better, by 2.56 to 5.82 points: vit_base_patch16_224 +5.38 (84.534 vs 79.154), vit_base_patch16_384 +4.908, vit_base_patch32_224 +5.824, vit_base_patch32_384 +4.608, vit_small_patch16_224 +2.56, vit_small_patch16_384 +2.684. The gain is not the same for the two sizes: the four Base rows gain 4.6 to 5.8 points (mean 5.18) and the two Small rows 2.6 to 2.7 (mean 2.62). This is consistent in direction with the ViT paper, which says large-scale pre-training helps ('large scale training trumps inductive bias') and that larger models show their benefit only with more pre-training data. It is not a confirmation: the paper's evidence uses different pre-training sets (ImageNet, ImageNet-21k, JFT-300M) and includes ViT-Large, which has no pair here, and with only two sizes a size effect cannot be separated from other differences between the Small and Base models.
+
+**System answer.** ## Gain from ImageNet-21k pre-training + fine-tuning vs. ImageNet-1k-only training
+
+From the SQL query on augreg-tagged timm weights:
+
+| Model | top1 (21k pretrain → 1k fine-tune) | top1 (1k only) | Gain |
+|---|---|---|---|
+| vit_small_patch16_224 | 81.402 | 78.842 | 81.402 − 78.842 = **2.56** pts |
+| vit_base_patch16_224 | 84.534 | 79.154 | 84.534 − 79.154 = **5.38** pts |
+
+**Is the gain similar for Small vs. Base?**
+No. The Base model's gain (5.38 pts) is roughly **2.1× larger** than the Small model's gain (2.56 pts) (5.38 / 2.56 ≈ 2.10). So additional large-scale pre-training (ImageNet-21k) helps the larger ViT-Base model substantially more than it helps the smaller ViT-Small model — the gains are not similar.
+
+**Is this consistent with the ViT paper's claims about pre-training data?**
+
+Yes, the direction is consistent. The ViT paper explicitly states that larger models benefit more from larger pre-training data:
+
+- "While large ViT models perform worse than BiT ResNets (shaded area) when pre-trained on small datasets, they shine when pre-trained on larger datasets. Similarly, larger ViT variants overtake smaller ones as the dataset grows." [ViT, p.6-7]
+- "ResNets perform better with smaller pre-training datasets but plateau sooner than ViT, which performs better with larger pre-training." [ViT, p.6-7]
+- "This result reinforces the intuition that the convolutional inductive bias is useful for smaller datasets, but for larger ones, learning the relevant patterns directly from data is sufficient, even beneficial." [ViT, p.7-8]
+
+These passages describe comparisons across dataset sizes (and across ViT model sizes) and consistently show that the *benefit of larger-scale pre-training grows with model size* — exactly the pattern seen in the query results, where the larger ViT-Base model gains more (5.38 pts) from ImageNet-21k pre-training than the smaller ViT-Small model (2.56 pts).
+
+**Caveat:** The passages do not report the specific ImageNet-21k vs. ImageNet-1k-only numbers for vit_small/vit_base from the database query — that comparison comes only from the SQL result. The passages establish the general qualitative trend (larger models benefit more from larger pre-training data) but do not themselves state these exact percentage-point figures, so the "consistency" conclusion is an inference connecting the query's numeric result to the paper's qualitative claim, not a directly cited paper statement of this exact gain.
+
+**Retrieved:** ViT p.6-7 (0.84); MAE p.7 (0.81); ViT p.5 (0.80); ViT p.13-14 (0.79); ViT p.7-8 (0.79) | gold page hit: 0.67
+**SQL:** `SELECT   arch,   MAX(CASE WHEN weights_tag = 'augreg_in21k_ft_in1k' THEN top1_val END) AS top1_in21k_ft_in1k,   MAX(CASE WHEN weights_tag = 'augreg_in1k' THEN top1_val END) AS top1_in1k_only,   MAX(CASE WHEN weights_tag = 'augreg_in21k_ft_in1k' THEN top1_val END) -   MAX(CASE WHEN weights_tag = 'augreg_in1k' THEN top1_val END) AS gain FROM model_results WHERE arch IN ('vit_small_patch16_224', 'vit_base_patch16_224')   AND weights_tag IN ('augreg_in21k_ft_in1k', 'augreg_in1k') GROUP BY arch;` | overlap with reference result: 0.31
+*23.0 s*
+
+## Q37 (text+table, cross-source, hard, answerable: yes)
+
+**Question.** The ViT paper reports that ViT needs roughly 2-4x less compute than ResNets for the same transfer performance. In timm at 224 px, how do ViT-B/16 and ResNet-50/101/152 compare on top-1 and measured throughput, and what does that comparison say, or not say, about the paper's claim?
+
+**Reference answer.** The paper's claim is about pre-training compute (Figure 5 is accuracy vs pre-training exaFLOPs, JFT-300M, controlled study), with the caveat that efficiency can depend on schedule, optimiser and weight decay. timm measures inference throughput and has no pre-training compute. At 224 px, taking the best ViT-B/16 row and the a1h_in1k row of each ResNet (one recipe across depths), vit_base_patch16_224.augreg2_in21k_ft_in1k has 85.108 top-1 at 2,992.79 samples/s (17.58 GMACs), versus resnet152.a1h_in1k 82.818 at 1,976.86 (11.56 GMACs), resnet101.a1h_in1k 81.95 at 2,781.19 (7.83 GMACs) and resnet50.a1h_in1k 80.654 at 4,302.84 (4.11 GMACs). So this ViT-B/16 row is more accurate than all three and faster than resnet152 (1.51x) and resnet101 (1.08x) despite more GMACs, but slower than resnet50. The ranking depends on which rows are compared: the best ResNet-50 row is resnet50.fb_swsl_ig1b_ft_in1k (81.146, trained with extra data) and is still below the best ViT-B/16 row, but the ImageNet-1k-only vit_base_patch16_224.augreg_in1k row (79.154) is below all three a1h_in1k ResNets, so the accuracy differences track pre-training data and recipe as much as architecture. These numbers neither confirm nor refute the 2-4x pre-training-compute claim.
+
+**System answer.** ## Data from the timm query (img_size=224, best checkpoint per arch by top1_val)
+
+| Model | top1_val | samples/sec | GMACs | Params (M) |
+|---|---|---|---|---|
+| ViT-B/16 (best: augreg2_in21k_ft_in1k) | 85.108 | 2992.79 | 17.58 | 86.57 |
+| ResNet-50 (best: fb_swsl_ig1b_ft_in1k) | 81.146 | 4302.84 | 4.11 | 25.56 |
+| ResNet-101 (best: a1h_in1k) | 81.95 | 2781.19 | 7.83 | 44.55 |
+| ResNet-152 (best: a1h_in1k) | 82.818 | 1976.86 | 11.56 | 60.19 |
+
+**Accuracy:** ViT-B/16's best top-1 (85.108) is higher than the best top-1 of ResNet-50 (81.146), ResNet-101 (81.95), and ResNet-152 (82.818) — a gap of +3.96pp, +3.16pp, +2.29pp respectively.
+
+**Throughput (inference, samples/sec):**
+- vs ResNet-50: 2992.79 / 4302.84 = 0.70× — ViT-B/16 is *slower*, not faster.
+- vs ResNet-101: 2992.79 / 2781.19 = 1.08× — ViT-B/16 is modestly faster.
+- vs ResNet-152: 2992.79 / 1976.86 = 1.51× — ViT-B/16 is faster.
+
+**Inference compute (GMACs per image):** ViT-B/16 uses *more* GMACs than every ResNet variant:
+- 17.58 / 4.11 = 4.28× more than ResNet-50
+- 17.58 / 7.83 = 2.25× more than ResNet-101
+- 17.58 / 11.56 = 1.52× more than ResNet-152
+
+**Params:** ViT-B/16 (86.57M) has more parameters than ResNet-50 (25.56M), ResNet-101 (44.55M), and ResNet-152 (60.19M).
+
+## What this does and doesn't say about the paper's claim
+
+The paper's 2–4× compute advantage is a specific claim about **total pre-training compute on JFT-300M** measured in exaFLOPs, derived from a "controlled scaling study" across 7 ResNets, 6 ViTs, and 5 hybrids pre-trained for 7 or 14 epochs on JFT-300M [ViT, p.7-8, section 4.3/4.4: "ViT uses approximately 2−4× less compute to attain the same performance (average over 5 datasets)"], with per-model numbers (in exaFLOPs) reported in Table 6 [ViT, p.15-16].
+
+The timm numbers above measure something different:
+- **samples/sec** and **GMACs** are *inference*-time measures, not *pre-training* compute (exaFLOPs over the JFT-300M pretraining run).
+- The best-performing timm checkpoints come from different training recipes/datasets (e.g., ViT-B/16 "augreg2_in21k_ft_in1k", ResNet-50 "fb_swsl_ig1b_ft_in1k") rather than the paper's controlled JFT-300M pretraining setup.
+
+So:
+- On inference GMACs, ViT-B/16 actually costs *more* compute per image (1.52×–4.28×) than all three ResNets while achieving higher accuracy — the opposite direction from "less compute for same performance," though it's not an unfair comparison since ViT here achieves strictly higher accuracy, not "the same" accuracy.
+- On throughput, ViT-B/16 is faster than ResNet-101/152 but slower than ResNet-50, which is a mixed, inference-specific picture.
+
+**Conclusion:** This timm-based comparison (inference throughput/GMACs on differently-sourced checkpoints) neither confirms nor refutes the ViT paper's specific 2–4× *pre-training*-compute claim, because it measures a different quantity (inference compute, not JFT-300M pretraining exaFLOPs) under different training conditions. The evidence here only shows that, at inference time with these particular timm checkpoints, ViT-B/16 attains higher top-1 accuracy than ResNet-50/101/152 but does so using more MACs per image (1.52×–4.28×) and more parameters, with throughput results that vary depending on which ResNet depth is used as the comparison point.
+
+**Retrieved:** ViT p.7-8 (0.79); ViT p.15-16 (0.78); ViT p.6-7 (0.76); ViT p.5-6 (0.75); ViT p.5 (0.75) | gold page hit: 1.00
+**SQL:** `SELECT   mr.model,   mr.arch,   mr.img_size,   mr.top1_val,   bi.samples_per_sec,   bi.batch_size,   bi.gmacs,   bi.param_count_m FROM model_results mr JOIN benchmark_infer bi   ON mr.arch = bi.arch AND mr.img_size = bi.img_size WHERE mr.img_size = 224   AND (     mr.arch = 'vit_base_patch16_224'     OR mr.arch IN ('resnet50', 'resnet101', 'resnet152')   ) ORDER BY mr.arch, mr.top1_val DESC;` | overlap with reference result: 1.00
+*40.9 s*
+
+## Q44 (text-only, conceptual, medium, answerable: yes)
+
+**Question.** In SWE-bench's baseline experiments, how are files chosen as model context (BM25 versus an 'oracle'), and what does the paper find about whether giving the model more retrieved context helps?
+
+**Reference answer.** The baselines either retrieve files with BM25 at three context limits (13k, 27k and 50k tokens), because dense retrieval is ill-suited to the very long keys and queries, or use an 'oracle' setting that supplies the files edited by the reference patch. BM25 recall of the oracle files rises with the context limit (average 29.58 / 44.41 / 51.06 for 13k / 27k / 50k), but Claude 2's resolve rate falls (1.96 / 1.87 / 1.22), and the authors say performance drops even though recall rises because models are ineffective at localizing problematic code; models do best on the shortest context. With the oracle retriever Claude 2 resolves 4.8% of issues, and in the 'oracle'-collapsed setting (oracle files, with code not directly modified by the PR collapsed except for +/-15 lines) GPT-4 rises from 1.3% to 3.4% and Claude 2 from 4.8% to 5.9%.
+
+**System answer.** ## How context files are chosen
+
+SWE-bench evaluates two retrieval approaches for selecting which files are given to the model as context:
+
+1. **BM25 retrieval**: Files are retrieved automatically using the BM25 algorithm, run against the issue text, under different maximum context-length limits (13k, 27k, 50k tokens). Each model is evaluated "on all limits that fit within its context window," and the best performance is reported [SWE-bench, p.5-6].
+
+2. **"Oracle" retrieval**: Instead of algorithmic retrieval, the files actually edited by the reference (gold) patch that solved the issue on GitHub are directly given as context. The paper notes this is "less realistic, since an engineer working on addressing an issue may not know a priori which files need to be modified," and also "not necessarily comprehensive since edited files alone may not include all the required context" [SWE-bench, p.5-6].
+
+The paper also quantifies how well BM25 approximates oracle context: "in approximately 40% of instances, BM25 retrieves a superset of the oracle files for the 27,000-token context limit. However, in almost half of the instances with the 27,000-token limit, it retrieves none of the files from the 'oracle' context" [SWE-bench, p.5-6]. Table 3 reports BM25 recall relative to oracle files: at 13k tokens, Avg recall = 29.58%, All = 26.09%, Any = 34.77%; at 27k, Avg = 44.41%, All = 39.83%, Any = 51.27%; at 50k, Avg = 51.06%, All = 45.90%, Any = 58.38% [SWE-bench, p.5-6].
+
+## Does more retrieved context help?
+
+**No — the paper finds that more context does *not* help, and in fact longer context windows hurt performance.** Evidence:
+
+- Table 2 (BM25 resolve rates by context length) shows resolve rate *decreasing* as context length increases:
+  - Claude 2: 13k → 1.96%, 27k → 1.87%, 50k → 1.22%
+  - SWE-Llama 7b: 13k → 0.70%, 27k → 0.31%, 50k → 0.00%
+  - SWE-Llama 13b: 13k → 0.70%, 27k → 0.48%, 50k → 0.00%
+  [SWE-bench, p.5-6]
+
+- The paper explicitly states: "From observation, models perform best on the shortest context window, as shown in Table 2" [SWE-bench, p.5-6].
+
+- The paper states directly: "Difficulty correlates with context length. Chat models may be pre-trained on long sequences of code but are typically asked to generate shorter coder snippets with limited context provided to frame the question" [SWE-bench, p.5-6] — implying longer/more retrieved context makes the task harder rather than easier.
+
+- Comparing retrieval settings: with oracle retrieval (precise, minimal, relevant files only), Claude 2 resolves 4.80% of issues [SWE-bench, p.26-27, Table 18], compared to only 1.96% (its best BM25 result at 13k) [SWE-bench, p.5-6, Table 2]. This shows that giving the *right* (even if fewer) files substantially outperforms giving *more* (but noisier, BM25-retrieved) context — i.e., quality/relevance of context matters more than quantity.
+
+- Additionally, the fine-tuned SWE-Llama models, trained specifically on oracle-style context, "perform surprisingly poorly with BM25 retrieved context," with the paper suggesting this is because "this shift in context makes it difficult for the model to perform reliably," since "SWE-Llama was trained to edit every file included as context whereas in the BM25 setting many files provided in context are not expected to be changed" [SWE-bench, p.7-8]. This further supports that adding more (less-targeted) retrieved context confuses rather than helps models.
+
+**Summary**: The evidence consistently shows that increasing the amount of retrieved context (via larger BM25 token limits) reduces resolve rates across all tested models, and that precise oracle context (fewer but correct files) outperforms broader BM25-retrieved context — indicating that more retrieved context does not help, and can actively hurt, model performance on SWE-bench [SWE-bench, p.5-6; p.7-8; p.26-27].
+
+**Retrieved:** SWE-bench p.5-6 (0.83); SWE-bench p.26-27 (0.79); SWE-bench p.7-8 (0.79); SWE-bench p.5-6 (0.77); SWE-bench p.25-26 (0.76) | gold page hit: 0.75
+*17.7 s*
+
+## Q45 (text-only, cross-paper, medium, answerable: yes)
+
+**Question.** BYOL reports that its accuracy stays stable over a wide range of batch sizes. What does BYOL say causes the drop at smaller batch sizes, and where does the Batch Normalization paper say the statistics used for normalization come from during training?
+
+**Reference answer.** BYOL (Figure 3a, batch sizes 128 to 4096): BYOL's performance remains stable from 256 to 4096 and only drops for smaller values 'due to batch normalization layers in the encoder'; a footnote says the only dependency on batch size in its training pipeline sits within the batch normalization layers. SimCLR, by contrast, deteriorates rapidly as the batch size falls, likely because there are fewer negative examples. BatchNorm paper: because training uses mini-batches, each mini-batch produces estimates of the mean and variance of each activation, and these statistics are used for the normalization and can fully participate in the gradient backpropagation. So during training a batch-normalized layer normalizes each example with statistics estimated from its mini-batch, which is where BYOL locates its batch-size dependence. Neither paper analyses why small batches hurt: BYOL does not explain the drop beyond naming the BN layers, and the BatchNorm paper does not discuss small-batch performance or BYOL, so the link is an inference from the two papers rather than a claim either makes.
+
+**System answer.** Based on the passages:
+
+**BYOL's cause of the drop at smaller batch sizes:**
+BYOL states that its performance "remains stable over a wide range of batch sizes from 256 to 4096, and only drops for smaller values due to batch normalization layers in the encoder" [BYOL, p.7-8]. This is reiterated in the appendix, where the authors note: "we think that the drop in performance at batch size 64 in table 16 is mainly related to the ill behaviour of batch normalization at low batch sizes" [BYOL, p.25-26].
+
+**Where Batch Normalization statistics come from during training (per the BatchNorm paper):**
+The BatchNorm paper describes normalizing "each mini-batch" and backpropagating gradients through the normalization parameters [BatchNorm, p.8]. More specifically, in the experimental description, the mean and variance statistics are computed per mini-batch during training, while at inference the network uses deterministic values that do not depend on the mini-batch — i.e., "deterministic inference that does not depend on the mini-batch" is listed as a key property, implying that during training the statistics do depend on the mini-batch [BatchNorm, p.8]. The passages do not provide the exact formula from Section 3.1 for how mini-batch mean/variance are computed, but they confirm that normalization during training uses mini-batch statistics (mean and variance computed over the current mini-batch), whereas inference uses population statistics recomputed separately (e.g., via "Alg. 2") [BatchNorm, p.8].
+
+**Summary:** BYOL attributes the accuracy drop at small batch sizes to the behavior of batch normalization layers in the encoder at low batch sizes [BYOL, p.7-8; p.25-26]. The BatchNorm paper confirms that normalization statistics during training are computed from each mini-batch, with inference instead using deterministic (population-based) statistics that don't depend on the mini-batch [BatchNorm, p.8]. The provided passages do not include the specific equations from BatchNorm Section 3.1 defining mini-batch mean and variance, so a more detailed formula cannot be given from this evidence alone.
+
+**Retrieved:** BYOL p.29-30 (0.80); BYOL p.7-8 (0.79); BYOL p.25-26 (0.78); BatchNorm p.8 (0.78); BatchNorm p.5-6 (0.76) | gold page hit: 0.67
+*10.7 s*
+
+## Q39 (text+table, cross-source, medium, answerable: yes)
+
+**Question.** The BYOL paper reports 74.3% for a linear classifier on frozen ResNet-50 features and cites supervised ResNet-50 baselines of 76.5% and 78.9%. How many timm ResNet-50 rows at 224 px have a top-1 accuracy at or above each of these three numbers, and what limits how that comparison can be read?
+
+**Reference answer.** The paper's numbers are 74.3% (BYOL, linear evaluation on frozen features), 76.5% and 78.9% (supervised baselines). Among timm's 18 resnet50 rows at 224 px, all 18 are at or above 74.3%, 17 are at or above 76.5% (the exception is resnet50.tv_in1k at 76.156), and 13 are at or above 78.9% (the five below are ra_in1k 78.82, bt_in1k 78.444, a3_in1k 78.052, gluon_in1k 77.58 and tv_in1k 76.156). These are not like-for-like: BYOL's 74.3% is a linear probe on self-supervised features, whereas timm's are fully supervised weights with different recipes, some using extra data (e.g. ig1b, yfcc100m), so the comparison says nothing about whether self-supervised learning is better or worse.
+
+**System answer.** ## Counts from the timm database
+
+For ResNet-50 architectures evaluated at 224 px resolution (18 total rows):
+
+| Threshold | Rows meeting/exceeding it | Fraction |
+|---|---|---|
+| ≥ 74.3% (BYOL linear-eval number) | 18 | 18/18 |
+| ≥ 76.5% (BYOL's cited supervised baseline [8]) | 17 | 17/18 |
+| ≥ 78.9% (BYOL's cited stronger supervised baseline [75]) | 13 | 13/18 |
+
+So **all 18** timm ResNet-50@224 entries beat BYOL's 74.3% linear-eval figure, **17 of 18** beat the 76.5% baseline, and **13 of 18** beat the 78.9% baseline.
+
+## What limits this comparison
+
+1. **The BYOL number is not a fully-trained supervised model.** The 74.3% is accuracy of a **linear classifier trained on frozen features** from a self-supervised ResNet-50 encoder [BYOL, p.6]. The timm rows, by contrast, are presumably standard end-to-end supervised ImageNet training runs. A linear probe on frozen self-supervised features and a fully fine-tuned supervised network are not evaluated under the same protocol, so a timm row beating 74.3% does not mean it beat BYOL's self-supervised representation under the same evaluation method.
+
+2. **The 76.5% and 78.9% baselines are recipe-specific, not architecture-fixed.** BYOL explicitly notes that the "vanilla supervised baseline of [8]" is 76.5%, while a "stronger supervised baseline" [75] using "advanced supervised learning techniques" reaches 78.9% — same ResNet-50 architecture, different training recipes [BYOL, p.6; p.19-20]. BYOL's own reproduction with RandAugment got only 76.4% top-1 for ResNet-50 (1×) [BYOL, p.19-20, Table 9], below the 78.9% figure. This shows that for a fixed ResNet-50 architecture, reported top-1 depends heavily on augmentation/training recipe (e.g., RandAugment, AutoAugment [87], MaxUp [75], label smoothing, warmup/cosine schedules, etc.), as the paper's own supervised baselines (76.4%, Table 9) versus [75]'s 78.9% illustrate.
+
+3. **The passages do not specify what training recipes timm's 18 rows use.** The database result gives no recipe/epoch/augmentation metadata, so it isn't possible from the given evidence to say whether the timm rows exceeding 76.5% or 78.9% reflect genuinely stronger architectures, longer training, newer augmentation strategies, or different data/label-smoothing setups — all factors the BYOL passages show can shift ResNet-50 top-1 by several points even with identical architecture [BYOL, p.6; p.19-20].
+
+4. **Timeframe/engineering progress confound.** Since the BYOL paper's cited baselines (76.5%, 78.9%) and its own Table 9 reproductions are from a specific point in time, and timm aggregates many ResNet-50 training recipes (potentially newer ones), a higher timm top-1 may simply reflect improvements in supervised training technique since BYOL's publication rather than a direct, controlled comparison to BYOL's self-supervised results.
+
+**In short:** the evidence supports that most/all timm ResNet-50@224 rows numerically exceed BYOL's cited figures, but the passages make clear that 74.3% is a linear-probe-on-frozen-features result, not a supervised training result [BYOL, p.6], and that the 76.5%/78.9% baselines are known to be recipe-sensitive for the identical architecture [BYOL, p.6; p.19-20]. The provided evidence does not establish recipe/epoch details for the timm rows, so it cannot confirm whether the comparison is controlling for training protocol.
+
+**Retrieved:** BYOL p.20-22 (0.84); BYOL p.6 (0.83); BYOL p.19-20 (0.81); BYOL p.6-7 (0.80); BYOL p.18-19 (0.78) | gold page hit: 1.00
+**SQL:** `SELECT   SUM(CASE WHEN top1_val >= 74.3 THEN 1 ELSE 0 END) AS n_ge_74_3,   SUM(CASE WHEN top1_val >= 76.5 THEN 1 ELSE 0 END) AS n_ge_76_5,   SUM(CASE WHEN top1_val >= 78.9 THEN 1 ELSE 0 END) AS n_ge_78_9,   COUNT(*) AS n_total_resnet50_224 FROM model_results WHERE arch = 'resnet50' AND img_size = 224;` | overlap with reference result: 1.00
+*35.1 s*

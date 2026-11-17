@@ -19,11 +19,11 @@ Made after the baseline grading, at the user's request. All eight revised or che
 | Q34 | The reference answer said robustness "decreases" with size next to numbers that rise; corrected. The question now asks about ImageNet-R and ImageNet-A top-1 instead of "robustness", and the answer adds the shrinking drop against clean accuracy. |
 | Q35 | Claim weakened to "consistent in direction" and the size question made less specific (similar gain for Small and Base). |
 | Q37 | The question no longer asks whether the data "confirms" the paper's claim (a yes/no verdict the table cannot support); it asks what the comparison says or does not say. The reference answer states which rows it uses and notes that the ranking depends on the rows chosen. |
-| Q39 | The question now asks how many rows "reach" each number (>= for all three, also in the stored SQL) and what limits how the comparison can be read, rather than what "must be kept in mind". |
+| Q39 | The question asks how many rows have a top-1 accuracy at or above each number (>= for all three, also in the stored SQL) and what limits how the comparison can be read, rather than what "must be kept in mind". Reworded again on 2026-11-16, from "reach" to "at or above", because four of six development runs read "reach" as an exact match. |
 | Q44 | New (SWE-bench: BM25 vs oracle context; the reserve candidate SW1), 10 evidence rows. |
 | Q45 | New (BYOL x BatchNorm: where BYOL's batch-size dependence sits and where BN's training statistics come from; the spare pairing), 6 evidence rows. A first draft on ViT parameter counts was dropped because held-out Q38 already asks it. |
 
-After the revision: 45 questions (25 text-only, 10 table-only, 10 text+table), 10 held-out and 35 development, 262 evidence rows (all quotes re-verified, 0 mismatches), 22 SQL statements re-run (all reproduce), and no manual-review flags remaining. The run in `runs/baseline/` predates this revision, so its rows for Q02, Q09, Q30, Q34, Q35, Q37 and Q39 answer the old wording and Q44 and Q45 have not been run.
+After the revision: 45 questions (25 text-only, 10 table-only, 10 text+table), 10 held-out and 35 development, 262 evidence rows (all quotes re-verified, 0 mismatches), 22 SQL statements re-run (all reproduce), and no manual-review flags remaining. The seven revised development questions and the two new ones were run on the revised wording in the six runs described in the README (Q39 again after its 2026-11-16 rewording).
 
 ## Update: five additional papers (P11–P15)
 
@@ -246,7 +246,7 @@ Q30, Q34, Q35, Q37 and Q39 were flagged when Part 2 was written and all were res
 | Q34 | The MAE link rests on the timm model card and tag name; the MAE PDF does not cover Hiera. Resolved: reference answer corrected (values rise with size), question asks about ImageNet-R and -A top-1, and the caveat is in the reference answer. |
 | Q35 | The two tags are different training pipelines, and only Small and Base have pairs. Resolved: the claim is now "consistent in direction" and the question asks whether the gain is similar for Small and Base. |
 | Q37 | Asked for a yes/no on pre-training compute, which the table does not contain; ViT weights use ImageNet-21k pre-training while the ResNets use ImageNet-1k recipes. Resolved: the question asks what the comparison says or does not say, the reference answer names the rows used, and the confound is stated. |
-| Q39 | Compares a linear probe on self-supervised features with fully supervised weights; BYOL's 76.5 and 78.9 baselines are cited from other papers. Resolved: the question asks how many rows reach each number and what limits how the comparison can be read; the caveats stay in the reference answer. |
+| Q39 | Compares a linear probe on self-supervised features with fully supervised weights; BYOL's 76.5 and 78.9 baselines are cited from other papers. Resolved: the question asks how many rows are at or above each number (reworded from "reach" on 2026-11-16, which four of six runs read as an exact match) and what limits how the comparison can be read; the caveats stay in the reference answer. |
 
 (The three text-only flags, Q02, Q09 and Q12, were also resolved on 2026-11-15.)
 
